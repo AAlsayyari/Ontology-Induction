@@ -1,0 +1,42 @@
+# Local Python environments and generated files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+*.log
+
+# Downloaded models, datasets, and inference output
+.cache/
+data/
+datasets/
+models/
+checkpoints/
+outputs/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.parquet
+*.arrow
+*.jsonl
+*.crdownload
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+local_settings.py
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

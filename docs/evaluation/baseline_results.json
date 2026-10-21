@@ -1,0 +1,1160 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "wordnet-3.0-nouns-v1",
+  "source": {
+    "name": "Princeton WordNet",
+    "version": "3.0",
+    "url": "https://wordnet.princeton.edu/",
+    "archive_url": "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/wordnet.zip",
+    "archive_sha256": "cbda5ea6eef7f36a97a43d4a75f85e07fccbb4f23657d27b4ccbc93e2646ab59",
+    "relationship": "direct hypernym",
+    "license_file": "WORDNET-LICENSE.txt"
+  },
+  "metadata": {
+    "started_at_utc": "2026-10-15T11:57:08+00:00",
+    "evaluation_date_asia_riyadh": "2026-10-15",
+    "benchmark_sha256": "628360ffdfd02cd136595885d17bcc777c0a66ed5db76802b04a3c878a932df0",
+    "python_version": "3.12.12",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "model_revision": null,
+    "model_config_sha256": "eed00b17e22553979d090fa492e587e92885e328914c8e0b0b78f0a0d3576b3b",
+    "weights_index_sha256": "bc8aaa0c87d4335177e01c765f1de0db81661c67c1a72fbfb0d521b09f5ddc56",
+    "dtype": "torch.bfloat16",
+    "gpu": "NVIDIA GeForce RTX 5080",
+    "gpu_memory_bytes": 17094475776,
+    "torch_cuda_version": "12.8",
+    "packages": {
+      "torch": "2.7.1+cu128",
+      "transformers": "4.55.4",
+      "pydantic": "2.11.7",
+      "lm-format-enforcer": "0.11.3"
+    },
+    "last_checkpoint_at_utc": "2026-10-15T12:02:50+00:00",
+    "sample_selected_at_utc": "2026-10-15T12:02:50+00:00",
+    "inference_finished_at_utc": "2026-10-15T12:02:50+00:00",
+    "runtime_source_commit": "a5ff34f7eb9f8bf8290258d455b3cb855c1e0c7f",
+    "run_scope": "Topology only, before the self-link decoding guard; no descriptions reviewed."
+  },
+  "settings": {
+    "max_degree": 3,
+    "sample_size": 50,
+    "seed": 42,
+    "quantization": "bf16",
+    "sampling": "Uniform without replacement over all successful topology predictions; selected before descriptions."
+  },
+  "scoring_scope": {
+    "connections": "Unordered predicted pairs versus listed reference direct-hypernym pairs, across every case including inference failures as empty predictions.",
+    "interpretation": "A reference mismatch is not proof that a conceptual connection is factually false. This selected benchmark is not an estimate for every domain.",
+    "sampled_labels": "Exact predicate and direction only within the uniformly sampled endpoint-pair universe; this is conditional sample recall, not end-to-end full-graph label recall.",
+    "cycles": "Undirected topology cycles and directed subClassOf cycles are separate. Only described sampled hierarchy edges can be checked for directed cycles.",
+    "structure": "Structure summaries use successful cases; failed cases remain in connection recall and are listed explicitly."
+  },
+  "coverage": {
+    "case_count": 8,
+    "successful_cases": 7,
+    "failed_cases": 1,
+    "pending_cases": 0,
+    "requested_sample_size": 50,
+    "selected_sample_size": 50,
+    "sample_shortfall": 0,
+    "completed_descriptions": 0,
+    "failed_descriptions": 0,
+    "pending_descriptions": 50
+  },
+  "connection_matching": {
+    "micro": {
+      "true_positive": 32,
+      "false_positive": 35,
+      "false_negative": 75,
+      "precision": 0.47761194029850745,
+      "recall": 0.29906542056074764,
+      "f1": 0.367816091954023,
+      "precision_denominator": 67,
+      "recall_denominator": 107
+    },
+    "macro": {
+      "precision": 0.42700008325008326,
+      "recall": 0.2980218311100664,
+      "f1": 0.34751475376475377
+    },
+    "case_count": 8
+  },
+  "reference_degree_ceiling": {
+    "reference_connections": 107,
+    "maximum_reference_connections_under_degree_cap": 102,
+    "maximum_micro_recall_under_degree_cap": 0.9532710280373832
+  },
+  "structure": {
+    "successful_case_count": 7,
+    "node_count": 113,
+    "isolated_count": 31,
+    "isolated_rate": 0.2743362831858407,
+    "maximum_degree": 3,
+    "self_loop_count": 0,
+    "duplicate_or_reverse_pair_count": 0,
+    "unknown_endpoint_count": 0,
+    "undirected_cycle_rank": 4,
+    "degree_cap_violation_count": 0,
+    "universal_hub_count": 0,
+    "maximum_neighbor_fraction": 0.2
+  },
+  "sampled_label_matching": {
+    "micro": {
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 22,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "precision_denominator": 0,
+      "recall_denominator": 22
+    },
+    "macro": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "case_count": 8
+  },
+  "sampled_hierarchy": {
+    "evaluated_subclass_edge_count": 0,
+    "directed_subclass_cycle_component_count": 0
+  },
+  "manual_review": {
+    "sample_size": 0,
+    "reviewed_count": 0,
+    "factual_accuracy_counts": {},
+    "direction_counts": {},
+    "factual_accuracy_over_reviewed": null,
+    "direction_correct_over_applicable_reviewed": null,
+    "joint_factual_and_direction_correct_over_reviewed": null
+  },
+  "cases": [
+    {
+      "id": "mammals",
+      "state": "error",
+      "connection_matching": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 13,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 0,
+        "recall_denominator": 13,
+        "predicted_connections": 0,
+        "reference_connections": 13
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 13,
+        "reference_maximum_degree": 4,
+        "reference_nodes_above_degree_cap": [
+          "canine"
+        ],
+        "maximum_reference_connections_under_degree_cap": 12,
+        "maximum_recall_under_degree_cap": 0.9230769230769231
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 0,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 16,
+        "isolated_rate": 1.0,
+        "isolated_nodes": [
+          "mammal",
+          "placental",
+          "carnivore",
+          "canine",
+          "dog",
+          "wolf",
+          "fox",
+          "feline",
+          "cat",
+          "big cat",
+          "lion",
+          "equine",
+          "horse",
+          "cetacean",
+          "whale",
+          "bat"
+        ],
+        "component_count": 16,
+        "components": [
+          [
+            "bat"
+          ],
+          [
+            "big cat"
+          ],
+          [
+            "canine"
+          ],
+          [
+            "carnivore"
+          ],
+          [
+            "cat"
+          ],
+          [
+            "cetacean"
+          ],
+          [
+            "dog"
+          ],
+          [
+            "equine"
+          ],
+          [
+            "feline"
+          ],
+          [
+            "fox"
+          ],
+          [
+            "horse"
+          ],
+          [
+            "lion"
+          ],
+          [
+            "mammal"
+          ],
+          [
+            "placental"
+          ],
+          [
+            "whale"
+          ],
+          [
+            "wolf"
+          ]
+        ],
+        "degree": {
+          "mammal": 0,
+          "placental": 0,
+          "carnivore": 0,
+          "canine": 0,
+          "dog": 0,
+          "wolf": 0,
+          "fox": 0,
+          "feline": 0,
+          "cat": 0,
+          "big cat": 0,
+          "lion": 0,
+          "equine": 0,
+          "horse": 0,
+          "cetacean": 0,
+          "whale": 0,
+          "bat": 0
+        },
+        "maximum_degree": 0,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.0,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 0,
+        "undirected_cycle_closing_edges": []
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 0,
+        "recall_denominator": 0,
+        "sampled_connections": 0,
+        "supported_descriptions": 0,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 0,
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 79.64,
+      "topology_model_calls": null,
+      "error": "ValueError: Invalid structured graph response: 1 validation error for ConnectedPair\n  Value error, A connection requires two different terms [type=value_error, input_value={'source': 'canine', 'target': 'canine'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/value_error"
+    },
+    {
+      "id": "birds",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 6,
+        "false_positive": 1,
+        "false_negative": 5,
+        "precision": 0.8571428571428571,
+        "recall": 0.5454545454545454,
+        "f1": 0.6666666666666665,
+        "precision_denominator": 7,
+        "recall_denominator": 11,
+        "predicted_connections": 7,
+        "reference_connections": 11
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 11,
+        "reference_maximum_degree": 4,
+        "reference_nodes_above_degree_cap": [
+          "bird of prey"
+        ],
+        "maximum_reference_connections_under_degree_cap": 10,
+        "maximum_recall_under_degree_cap": 0.9090909090909091
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 7,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 5,
+        "isolated_rate": 0.3125,
+        "isolated_nodes": [
+          "owl",
+          "eagle",
+          "hawk",
+          "domestic fowl",
+          "chicken"
+        ],
+        "component_count": 9,
+        "components": [
+          [
+            "bird",
+            "vertebrate",
+            "bird of prey",
+            "anseriform bird",
+            "duck"
+          ],
+          [
+            "columbiform bird",
+            "pigeon"
+          ],
+          [
+            "passerine",
+            "sparrow"
+          ],
+          [
+            "sphenisciform seabird",
+            "penguin"
+          ],
+          [
+            "chicken"
+          ],
+          [
+            "domestic fowl"
+          ],
+          [
+            "eagle"
+          ],
+          [
+            "hawk"
+          ],
+          [
+            "owl"
+          ]
+        ],
+        "degree": {
+          "bird": 3,
+          "vertebrate": 1,
+          "bird of prey": 1,
+          "owl": 0,
+          "eagle": 0,
+          "hawk": 0,
+          "anseriform bird": 2,
+          "duck": 1,
+          "domestic fowl": 0,
+          "chicken": 0,
+          "columbiform bird": 1,
+          "pigeon": 1,
+          "sphenisciform seabird": 1,
+          "penguin": 1,
+          "passerine": 1,
+          "sparrow": 1
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 0,
+        "undirected_cycle_closing_edges": []
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 6,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 0,
+        "recall_denominator": 6,
+        "sampled_connections": 7,
+        "supported_descriptions": 0,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 0,
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 22.203,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "vehicles",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 6,
+        "false_positive": 3,
+        "false_negative": 6,
+        "precision": 0.6666666666666666,
+        "recall": 0.5,
+        "f1": 0.5714285714285715,
+        "precision_denominator": 9,
+        "recall_denominator": 12,
+        "predicted_connections": 9,
+        "reference_connections": 12
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 12,
+        "reference_maximum_degree": 3,
+        "reference_nodes_above_degree_cap": [],
+        "maximum_reference_connections_under_degree_cap": 12,
+        "maximum_recall_under_degree_cap": 1.0
+      },
+      "structure": {
+        "node_count": 17,
+        "unique_connection_count": 9,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 4,
+        "isolated_rate": 0.23529411764705882,
+        "isolated_nodes": [
+          "vehicle",
+          "motorcycle",
+          "bicycle",
+          "heavier-than-air craft"
+        ],
+        "component_count": 8,
+        "components": [
+          [
+            "wheeled vehicle",
+            "motor vehicle",
+            "car",
+            "truck"
+          ],
+          [
+            "aircraft",
+            "airplane",
+            "helicopter"
+          ],
+          [
+            "public transport",
+            "bus",
+            "train"
+          ],
+          [
+            "vessel",
+            "boat",
+            "ship"
+          ],
+          [
+            "bicycle"
+          ],
+          [
+            "heavier-than-air craft"
+          ],
+          [
+            "motorcycle"
+          ],
+          [
+            "vehicle"
+          ]
+        ],
+        "degree": {
+          "vehicle": 0,
+          "wheeled vehicle": 1,
+          "motor vehicle": 3,
+          "car": 1,
+          "truck": 1,
+          "motorcycle": 0,
+          "bicycle": 0,
+          "public transport": 2,
+          "bus": 1,
+          "train": 1,
+          "vessel": 2,
+          "boat": 1,
+          "ship": 1,
+          "aircraft": 2,
+          "heavier-than-air craft": 0,
+          "airplane": 1,
+          "helicopter": 1
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.1875,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 0,
+        "undirected_cycle_closing_edges": []
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 0,
+        "recall_denominator": 4,
+        "sampled_connections": 6,
+        "supported_descriptions": 0,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 0,
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 48.704,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "food",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 5,
+        "false_positive": 8,
+        "false_negative": 9,
+        "precision": 0.38461538461538464,
+        "recall": 0.35714285714285715,
+        "f1": 0.3703703703703704,
+        "precision_denominator": 13,
+        "recall_denominator": 14,
+        "predicted_connections": 13,
+        "reference_connections": 14
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 14,
+        "reference_maximum_degree": 3,
+        "reference_nodes_above_degree_cap": [],
+        "maximum_reference_connections_under_degree_cap": 14,
+        "maximum_recall_under_degree_cap": 1.0
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 13,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 1,
+        "isolated_rate": 0.0625,
+        "isolated_nodes": [
+          "bread"
+        ],
+        "component_count": 3,
+        "components": [
+          [
+            "vegetable",
+            "carrot",
+            "potato",
+            "edible fruit",
+            "apple",
+            "citrus",
+            "orange",
+            "lemon"
+          ],
+          [
+            "food",
+            "produce",
+            "root vegetable",
+            "baked goods",
+            "starches",
+            "grain",
+            "rice"
+          ],
+          [
+            "bread"
+          ]
+        ],
+        "degree": {
+          "food": 3,
+          "produce": 2,
+          "vegetable": 3,
+          "root vegetable": 1,
+          "carrot": 1,
+          "potato": 1,
+          "edible fruit": 3,
+          "apple": 1,
+          "citrus": 3,
+          "orange": 1,
+          "lemon": 1,
+          "baked goods": 1,
+          "bread": 0,
+          "starches": 3,
+          "grain": 1,
+          "rice": 1
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 0,
+        "undirected_cycle_closing_edges": []
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 0,
+        "recall_denominator": 3,
+        "sampled_connections": 8,
+        "supported_descriptions": 0,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 0,
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 30.531,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "musical_instruments",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 8,
+        "false_positive": 2,
+        "false_negative": 9,
+        "precision": 0.8,
+        "recall": 0.47058823529411764,
+        "f1": 0.5925925925925927,
+        "precision_denominator": 10,
+        "recall_denominator": 17,
+        "predicted_connections": 10,
+        "reference_connections": 17
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 17,
+        "reference_maximum_degree": 4,
+        "reference_nodes_above_degree_cap": [
+          "musical instrument",
+          "stringed instrument"
+        ],
+        "maximum_reference_connections_under_degree_cap": 16,
+        "maximum_recall_under_degree_cap": 0.9411764705882353
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 10,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 2,
+        "isolated_rate": 0.125,
+        "isolated_nodes": [
+          "musical instrument",
+          "cello"
+        ],
+        "component_count": 6,
+        "components": [
+          [
+            "wind instrument",
+            "woodwind",
+            "flute",
+            "brass instrument",
+            "trumpet",
+            "trombone"
+          ],
+          [
+            "stringed instrument",
+            "bowed stringed instrument",
+            "guitar",
+            "violin"
+          ],
+          [
+            "keyboard instrument",
+            "piano"
+          ],
+          [
+            "percussion instrument",
+            "drum"
+          ],
+          [
+            "cello"
+          ],
+          [
+            "musical instrument"
+          ]
+        ],
+        "degree": {
+          "musical instrument": 0,
+          "stringed instrument": 1,
+          "bowed stringed instrument": 3,
+          "guitar": 1,
+          "violin": 1,
+          "cello": 0,
+          "keyboard instrument": 1,
+          "piano": 1,
+          "wind instrument": 1,
+          "woodwind": 3,
+          "flute": 1,
+          "brass instrument": 3,
+          "trumpet": 1,
+          "trombone": 1,
+          "percussion instrument": 1,
+          "drum": 1
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 0,
+        "undirected_cycle_closing_edges": []
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 0,
+        "recall_denominator": 5,
+        "sampled_connections": 7,
+        "supported_descriptions": 0,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 0,
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 42.422,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "anatomy",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 1,
+        "false_positive": 10,
+        "false_negative": 12,
+        "precision": 0.09090909090909091,
+        "recall": 0.07692307692307693,
+        "f1": 0.08333333333333334,
+        "precision_denominator": 11,
+        "recall_denominator": 13,
+        "predicted_connections": 11,
+        "reference_connections": 13
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 13,
+        "reference_maximum_degree": 5,
+        "reference_nodes_above_degree_cap": [
+          "internal organ"
+        ],
+        "maximum_reference_connections_under_degree_cap": 11,
+        "maximum_recall_under_degree_cap": 0.8461538461538461
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 11,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 7,
+        "isolated_rate": 0.4375,
+        "isolated_nodes": [
+          "body part",
+          "organ",
+          "internal organ",
+          "excretory organ",
+          "respiratory organ",
+          "skin",
+          "body covering"
+        ],
+        "component_count": 8,
+        "components": [
+          [
+            "heart",
+            "liver",
+            "kidney",
+            "lung",
+            "blood vessel",
+            "artery",
+            "vein",
+            "connective tissue",
+            "bone"
+          ],
+          [
+            "body covering"
+          ],
+          [
+            "body part"
+          ],
+          [
+            "excretory organ"
+          ],
+          [
+            "internal organ"
+          ],
+          [
+            "organ"
+          ],
+          [
+            "respiratory organ"
+          ],
+          [
+            "skin"
+          ]
+        ],
+        "degree": {
+          "body part": 0,
+          "organ": 0,
+          "internal organ": 0,
+          "heart": 3,
+          "liver": 3,
+          "excretory organ": 0,
+          "kidney": 3,
+          "respiratory organ": 0,
+          "lung": 2,
+          "blood vessel": 3,
+          "artery": 3,
+          "vein": 3,
+          "connective tissue": 1,
+          "bone": 1,
+          "skin": 0,
+          "body covering": 0
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 3,
+        "undirected_cycle_closing_edges": [
+          {
+            "source": "blood vessel",
+            "target": "kidney"
+          },
+          {
+            "source": "blood vessel",
+            "target": "lung"
+          },
+          {
+            "source": "liver",
+            "target": "vein"
+          }
+        ]
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 0,
+        "recall_denominator": 0,
+        "sampled_connections": 8,
+        "supported_descriptions": 0,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 0,
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 42.844,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "occupations",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 5,
+        "false_positive": 7,
+        "false_negative": 9,
+        "precision": 0.4166666666666667,
+        "recall": 0.35714285714285715,
+        "f1": 0.3846153846153846,
+        "precision_denominator": 12,
+        "recall_denominator": 14,
+        "predicted_connections": 12,
+        "reference_connections": 14
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 14,
+        "reference_maximum_degree": 3,
+        "reference_nodes_above_degree_cap": [],
+        "maximum_reference_connections_under_degree_cap": 14,
+        "maximum_recall_under_degree_cap": 1.0
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 12,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 3,
+        "isolated_rate": 0.1875,
+        "isolated_nodes": [
+          "person",
+          "medical practitioner",
+          "dentist"
+        ],
+        "component_count": 5,
+        "components": [
+          [
+            "worker",
+            "skilled worker",
+            "professional",
+            "health professional",
+            "doctor",
+            "surgeon",
+            "nurse",
+            "educator",
+            "teacher"
+          ],
+          [
+            "craftsman",
+            "woodworker",
+            "carpenter",
+            "electrician"
+          ],
+          [
+            "dentist"
+          ],
+          [
+            "medical practitioner"
+          ],
+          [
+            "person"
+          ]
+        ],
+        "degree": {
+          "person": 0,
+          "worker": 2,
+          "skilled worker": 2,
+          "professional": 2,
+          "health professional": 3,
+          "medical practitioner": 0,
+          "doctor": 3,
+          "surgeon": 1,
+          "dentist": 0,
+          "nurse": 1,
+          "educator": 3,
+          "teacher": 1,
+          "craftsman": 3,
+          "woodworker": 1,
+          "carpenter": 1,
+          "electrician": 1
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 1,
+        "undirected_cycle_closing_edges": [
+          {
+            "source": "skilled worker",
+            "target": "worker"
+          }
+        ]
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 0,
+        "recall_denominator": 4,
+        "sampled_connections": 10,
+        "supported_descriptions": 0,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 0,
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 30.375,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "computing",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 1,
+        "false_positive": 4,
+        "false_negative": 12,
+        "precision": 0.2,
+        "recall": 0.07692307692307693,
+        "f1": 0.1111111111111111,
+        "precision_denominator": 5,
+        "recall_denominator": 13,
+        "predicted_connections": 5,
+        "reference_connections": 13
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 13,
+        "reference_maximum_degree": 3,
+        "reference_nodes_above_degree_cap": [],
+        "maximum_reference_connections_under_degree_cap": 13,
+        "maximum_recall_under_degree_cap": 1.0
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 5,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 9,
+        "isolated_rate": 0.5625,
+        "isolated_nodes": [
+          "machine",
+          "desktop computer",
+          "server",
+          "software",
+          "code",
+          "operating system",
+          "program",
+          "compiler",
+          "interpreter"
+        ],
+        "component_count": 11,
+        "components": [
+          [
+            "computer",
+            "portable computer",
+            "laptop",
+            "personal computer"
+          ],
+          [
+            "device",
+            "keyboard",
+            "printer"
+          ],
+          [
+            "code"
+          ],
+          [
+            "compiler"
+          ],
+          [
+            "desktop computer"
+          ],
+          [
+            "interpreter"
+          ],
+          [
+            "machine"
+          ],
+          [
+            "operating system"
+          ],
+          [
+            "program"
+          ],
+          [
+            "server"
+          ],
+          [
+            "software"
+          ]
+        ],
+        "degree": {
+          "machine": 0,
+          "computer": 3,
+          "portable computer": 1,
+          "laptop": 1,
+          "personal computer": 1,
+          "desktop computer": 0,
+          "server": 0,
+          "software": 0,
+          "code": 0,
+          "operating system": 0,
+          "program": 0,
+          "compiler": 0,
+          "interpreter": 0,
+          "device": 2,
+          "keyboard": 1,
+          "printer": 1
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 0,
+        "undirected_cycle_closing_edges": []
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 0,
+        "recall_denominator": 0,
+        "sampled_connections": 4,
+        "supported_descriptions": 0,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 0,
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 31.172,
+      "topology_model_calls": 1
+    }
+  ]
+}

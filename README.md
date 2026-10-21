@@ -4,7 +4,7 @@
 
 Word to Graph explores a practical problem in AI interfaces: a useful graph needs clear structure before it needs a label on every edge. The application groups terms across one or several domains, proposes a sparse topology, and generates relationship descriptions only when you inspect a connection.
 
-![Word to Graph showing a sparse graph of mixed-domain terms](docs/images/graph.png)
+![Word to Graph showing an automatically arranged vehicle graph from the evaluation](docs/images/graph.png)
 
 <details>
 <summary>See a relationship explanation</summary>
@@ -16,7 +16,7 @@ Word to Graph explores a practical problem in AI interfaces: a useful graph need
 ## What you can do
 
 - Enter 2–200 comma-separated terms from any combination of domains.
-- Explore a graph with cluster colors, draggable nodes, zoom, and a **Fit graph** control.
+- Explore an automatically arranged graph with cluster colors, zoom, and a **Fit graph** control.
 - Click a connection to see its proposed predicate, direction, and a one-sentence explanation.
 - Show or hide relation labels. Previously described connections are cached.
 
@@ -40,11 +40,48 @@ flowchart LR
 
 **Descriptions on demand.** The second phase sees the selected pair, the input terms, and their clusters. It proposes a precise predicate and a short explanation in that context. Predicates are not selected from a finance or food template. If the model cannot support a relationship, it can return an uncertain result with no predicate. Direction is added after description without changing the original connected pair.
 
-**Explicit output contracts.** JSON-schema-constrained decoding restricts generated endpoints to the input terms. Pydantic validates cluster coverage, pair uniqueness, degree limits, and description endpoints. These checks enforce structural consistency; they do not certify the model's factual claims.
+**Automatic layout.** Connected components receive a graph-aware layout, then a collision pass separates node boxes using their measured label sizes. Component packing reduces wasted space, and obstructed edges take routes around other nodes. The layout adapts when the browser is resized or relation labels are shown; manual dragging is optional.
+
+**Explicit output contracts.** JSON-schema-constrained decoding restricts generated endpoints to the input terms and excludes self-links before generation. Pydantic validates cluster coverage, pair uniqueness, degree limits, and description endpoints. These checks enforce structural consistency; they do not certify the model's factual claims.
 
 **Bounded local inference.** A single background worker keeps the model loaded and serializes GPU work. Job polling reports progress without blocking the browser. Description caches avoid repeated inference, and frontend request handling prevents late replies from overwriting the currently selected edge or a replacement graph.
 
 **Large-list handling.** Lists of up to 24 terms use one topology call. Larger lists receive a complete cluster assignment, followed by passes of 24 source terms. Each pass retains all input terms as possible targets, so batching does not exclude connections across batches or domains.
+
+## Measured evaluation
+
+Evaluated on **2026-10-15** with Qwen2.5-3B-Instruct (BF16) on an RTX 5080:
+eight WordNet 3.0 graphs, **129 terms and 107 direct reference links**.
+
+| Version | Successful graphs | Precision | Recall | F1 |
+| --- | ---: | ---: | ---: | ---: |
+| Before self-link guard | 7/8 | 47.76% | 29.91% | 36.78% |
+| Current decoder | 8/8 | 51.25% | 38.32% | 43.85% |
+
+These micro scores measure exact **unlabelled direct-taxonomy connections**.
+A useful association or broader ancestor can still be a reference mismatch.
+The original failed graph remains in the baseline recall denominator.
+
+The **50-pair assistant review** found **6 correct complete answers, 39 incorrect,
+and 5 uncertain**. Direction was correct for **9/48 applicable pairs (18.75%)**;
+two predicates were symmetric. Reversed subtype edges frequently contradicted
+otherwise correct explanations. This is a qualitative audit, not independent
+human validation or an estimate for every domain.
+
+Structural checks found zero self-links or universal hubs and a maximum degree
+of three, but **32/129 terms were isolated** and the graphs had **5 independent
+undirected cycles**. No directed type cycle was detected among the 32 recognized
+type edges in the reviewed sample; remaining unlabelled edges were not certified.
+
+Automatic-layout browser checks passed with **zero node overlaps** across the
+2-200-node fixtures, including long labels and resizing. On one 36-node fixture,
+overlapping node boxes fell from 24 at preset positions to zero after arranging.
+
+See the [full results and reproduction commands](docs/evaluation/results.md),
+[50 individual judgments](docs/evaluation/manual_review.csv),
+[saved predictions](docs/evaluation/predictions.json), and
+[benchmark provenance](docs/evaluation/benchmark.md). The model remains a
+**proposal generator requiring semantic review**.
 
 ## Run locally
 
@@ -115,7 +152,9 @@ An uncached request returns a job ID; a cached description returns `200` immedia
 ```text
 word_graph/           Inference, topology generation, schemas, and HTTP server
 web/                  Browser UI and local Cytoscape assets
-tests/                Structural, API, and browser regression checks
+tests/                Structural, API, evaluation, and browser regression checks
+evaluation/           WordNet extraction, checkpointed inference, and scoring
+docs/evaluation/      Reference fixture, predictions, metrics, and 50-pair audit
 docs/images/          Screenshots from the running application
 web_ui.py             Application entry point
 setup_environment.ps1 Windows environment setup
@@ -140,6 +179,8 @@ GitHub Actions runs the unit suite without a GPU or downloaded model. To run the
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 .\.venv\Scripts\python.exe -m playwright install chromium
 .\.venv\Scripts\python.exe tests/browser_topology_races.py
+.\.venv\Scripts\python.exe tests/browser_layout.py
+.\.venv\Scripts\python.exe tests/browser_saved_graph.py
 .\.venv\Scripts\python.exe tests/browser_topology.py --url http://127.0.0.1:8000
 ```
 

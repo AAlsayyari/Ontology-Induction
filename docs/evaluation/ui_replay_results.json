@@ -1,0 +1,17 @@
+{
+  "prediction_source": "docs/evaluation/predictions.json",
+  "prediction_sha256": "f002f28cbdaadc50d07e1ff06015e263abbade2a6c5f73ee5ade197af9630376",
+  "case": "vehicles",
+  "sample_id": "pair-014",
+  "live_model_inference": false,
+  "node_count": 17,
+  "description_requests": 1,
+  "checks": [
+    "render actual saved model graph",
+    "lazy edge inspection",
+    "reversed endpoint routing",
+    "cached repeat click",
+    "fit graph"
+  ],
+  "javascript_errors": []
+}

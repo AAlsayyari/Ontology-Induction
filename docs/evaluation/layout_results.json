@@ -1,0 +1,410 @@
+{
+  "generated_graph": {
+    "node_count": 24,
+    "edge_count": 26,
+    "node_overlaps": [],
+    "label_overflow": [],
+    "edge_node_intersections": [],
+    "routed_edges": 9,
+    "maximum_label_lines": 6,
+    "zoom": 0.5049660813816811
+  },
+  "preset_positions_baseline": {
+    "node_count": 36,
+    "edge_count": 39,
+    "node_overlaps": [
+      [
+        "n0",
+        "n4"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n2",
+        "n6"
+      ],
+      [
+        "n3",
+        "n7"
+      ],
+      [
+        "n4",
+        "n8"
+      ],
+      [
+        "n5",
+        "n9"
+      ],
+      [
+        "n6",
+        "n10"
+      ],
+      [
+        "n7",
+        "n11"
+      ],
+      [
+        "n12",
+        "n16"
+      ],
+      [
+        "n13",
+        "n17"
+      ],
+      [
+        "n14",
+        "n18"
+      ],
+      [
+        "n15",
+        "n19"
+      ],
+      [
+        "n16",
+        "n20"
+      ],
+      [
+        "n17",
+        "n21"
+      ],
+      [
+        "n18",
+        "n22"
+      ],
+      [
+        "n19",
+        "n23"
+      ],
+      [
+        "n24",
+        "n28"
+      ],
+      [
+        "n25",
+        "n29"
+      ],
+      [
+        "n26",
+        "n30"
+      ],
+      [
+        "n27",
+        "n31"
+      ],
+      [
+        "n28",
+        "n32"
+      ],
+      [
+        "n29",
+        "n33"
+      ],
+      [
+        "n30",
+        "n34"
+      ],
+      [
+        "n31",
+        "n35"
+      ]
+    ],
+    "label_overflow": [],
+    "edge_node_intersections": [
+      [
+        "e3",
+        "n1"
+      ],
+      [
+        "e3",
+        "n2"
+      ],
+      [
+        "e3",
+        "n5"
+      ],
+      [
+        "e3",
+        "n6"
+      ],
+      [
+        "e7",
+        "n5"
+      ],
+      [
+        "e7",
+        "n6"
+      ],
+      [
+        "e7",
+        "n9"
+      ],
+      [
+        "e7",
+        "n10"
+      ],
+      [
+        "e11",
+        "n1"
+      ],
+      [
+        "e11",
+        "n5"
+      ],
+      [
+        "e11",
+        "n6"
+      ],
+      [
+        "e11",
+        "n10"
+      ],
+      [
+        "e12",
+        "n5"
+      ],
+      [
+        "e12",
+        "n6"
+      ],
+      [
+        "e16",
+        "n13"
+      ],
+      [
+        "e16",
+        "n14"
+      ],
+      [
+        "e16",
+        "n17"
+      ],
+      [
+        "e16",
+        "n18"
+      ],
+      [
+        "e20",
+        "n17"
+      ],
+      [
+        "e20",
+        "n18"
+      ],
+      [
+        "e20",
+        "n21"
+      ],
+      [
+        "e20",
+        "n22"
+      ],
+      [
+        "e24",
+        "n13"
+      ],
+      [
+        "e24",
+        "n17"
+      ],
+      [
+        "e24",
+        "n18"
+      ],
+      [
+        "e24",
+        "n22"
+      ],
+      [
+        "e25",
+        "n17"
+      ],
+      [
+        "e25",
+        "n18"
+      ],
+      [
+        "e29",
+        "n25"
+      ],
+      [
+        "e29",
+        "n26"
+      ],
+      [
+        "e29",
+        "n29"
+      ],
+      [
+        "e29",
+        "n30"
+      ],
+      [
+        "e33",
+        "n29"
+      ],
+      [
+        "e33",
+        "n30"
+      ],
+      [
+        "e33",
+        "n33"
+      ],
+      [
+        "e33",
+        "n34"
+      ],
+      [
+        "e37",
+        "n25"
+      ],
+      [
+        "e37",
+        "n29"
+      ],
+      [
+        "e37",
+        "n30"
+      ],
+      [
+        "e37",
+        "n34"
+      ],
+      [
+        "e38",
+        "n29"
+      ],
+      [
+        "e38",
+        "n30"
+      ]
+    ],
+    "routed_edges": 0,
+    "maximum_label_lines": 6,
+    "zoom": 0.49380207274944116
+  },
+  "long_labels": {
+    "node_count": 36,
+    "edge_count": 39,
+    "node_overlaps": [],
+    "label_overflow": [],
+    "edge_node_intersections": [],
+    "routed_edges": 13,
+    "maximum_label_lines": 6,
+    "zoom": 0.2617823080121079,
+    "layout_ms": 30.9
+  },
+  "long_labels_resized": {
+    "node_count": 36,
+    "edge_count": 39,
+    "node_overlaps": [],
+    "label_overflow": [],
+    "edge_node_intersections": [],
+    "routed_edges": 13,
+    "maximum_label_lines": 6,
+    "zoom": 0.22946350455382297
+  },
+  "maximum_200_nodes": {
+    "node_count": 200,
+    "edge_count": 204,
+    "node_overlaps": [],
+    "label_overflow": [],
+    "edge_node_intersections": [],
+    "routed_edges": 70,
+    "maximum_label_lines": 6,
+    "zoom": 0.16115884025862384,
+    "layout_ms": 94.4
+  },
+  "maximum_200_nodes_resized": {
+    "node_count": 200,
+    "edge_count": 204,
+    "node_overlaps": [],
+    "label_overflow": [],
+    "edge_node_intersections": [],
+    "routed_edges": 70,
+    "maximum_label_lines": 6,
+    "zoom": 0.12688780484465026
+  },
+  "connected_200_long_labels": {
+    "node_count": 200,
+    "edge_count": 201,
+    "node_overlaps": [],
+    "label_overflow": [],
+    "edge_node_intersections": [],
+    "routed_edges": 106,
+    "maximum_label_lines": 6,
+    "zoom": 0.1375182533236251,
+    "layout_ms": 3657.6
+  },
+  "connected_200_long_labels_resized": {
+    "node_count": 200,
+    "edge_count": 201,
+    "node_overlaps": [],
+    "label_overflow": [],
+    "edge_node_intersections": [],
+    "routed_edges": 106,
+    "maximum_label_lines": 6,
+    "zoom": 0.10006647369506337
+  },
+  "all_200_disconnected": {
+    "node_count": 200,
+    "edge_count": 0,
+    "node_overlaps": [],
+    "label_overflow": [],
+    "edge_node_intersections": [],
+    "routed_edges": 0,
+    "maximum_label_lines": 6,
+    "zoom": 0.18605007273562515
+  },
+  "minimum_two_nodes": {
+    "node_count": 2,
+    "edge_count": 1,
+    "node_overlaps": [],
+    "label_overflow": [],
+    "edge_node_intersections": [],
+    "routed_edges": 0,
+    "maximum_label_lines": 6,
+    "zoom": 2.003388649494122
+  },
+  "labels_visible": {
+    "node_count": 24,
+    "edge_count": 26,
+    "node_overlaps": [],
+    "label_overflow": [],
+    "edge_node_intersections": [],
+    "routed_edges": 7,
+    "maximum_label_lines": 6,
+    "zoom": 0.41332219540011506
+  },
+  "obstructed_edge": {
+    "node_count": 24,
+    "edge_count": 26,
+    "node_overlaps": [],
+    "label_overflow": [],
+    "edge_node_intersections": [],
+    "routed_edges": 4,
+    "maximum_label_lines": 6,
+    "zoom": 0.09205940293983936
+  },
+  "reversed_edge": {
+    "node_count": 24,
+    "edge_count": 26,
+    "node_overlaps": [],
+    "label_overflow": [],
+    "edge_node_intersections": [],
+    "routed_edges": 4,
+    "maximum_label_lines": 6,
+    "zoom": 0.09205940293983936
+  },
+  "javascript_errors": [],
+  "metadata": {
+    "evaluation_date_asia_riyadh": "2026-10-15",
+    "runner": "tests/browser_layout.py",
+    "browser_channel": "chrome",
+    "fixtures": "Synthetic geometry regression fixtures, not factual model evaluation.",
+    "frontend_sha256": "f1192d2a5e0b0e1a72fe63a97b1db55fe0c7a93c5317d59588500a17922bdbe7",
+    "test_sha256": "054539a72b10157c20851790a872e4d479682276acf88b22ab1db42fb98ef3ae"
+  }
+}

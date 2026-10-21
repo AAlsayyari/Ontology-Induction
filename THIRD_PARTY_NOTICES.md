@@ -40,3 +40,14 @@ a license from the model provider. That agreement applies to the model materials
 independently of this application's source code.
 
 Other installed Python dependencies retain their respective upstream licenses.
+
+## WordNet evaluation fixture
+
+`docs/evaluation/benchmark.json` contains a small modified subset of Princeton
+WordNet 3.0 noun senses, definitions, and direct hypernym links, used only for
+evaluation. WordNet 3.0 Copyright 2006 by Princeton University. All rights
+reserved. Its complete license is retained in
+[docs/evaluation/WORDNET-LICENSE.txt](docs/evaluation/WORDNET-LICENSE.txt).
+See [the benchmark provenance](docs/evaluation/benchmark.md) for the source,
+archive checksum, selection method, and extraction instructions. The full
+corpus is downloaded separately into the ignored local cache.

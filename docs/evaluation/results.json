@@ -1,0 +1,1371 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "wordnet-3.0-nouns-v1",
+  "source": {
+    "name": "Princeton WordNet",
+    "version": "3.0",
+    "url": "https://wordnet.princeton.edu/",
+    "archive_url": "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/wordnet.zip",
+    "archive_sha256": "cbda5ea6eef7f36a97a43d4a75f85e07fccbb4f23657d27b4ccbc93e2646ab59",
+    "relationship": "direct hypernym",
+    "license_file": "WORDNET-LICENSE.txt"
+  },
+  "metadata": {
+    "started_at_utc": "2026-10-15T12:04:39+00:00",
+    "evaluation_date_asia_riyadh": "2026-10-15",
+    "benchmark_sha256": "628360ffdfd02cd136595885d17bcc777c0a66ed5db76802b04a3c878a932df0",
+    "python_version": "3.12.12",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "model_revision": null,
+    "model_config_sha256": "eed00b17e22553979d090fa492e587e92885e328914c8e0b0b78f0a0d3576b3b",
+    "weights_index_sha256": "bc8aaa0c87d4335177e01c765f1de0db81661c67c1a72fbfb0d521b09f5ddc56",
+    "dtype": "torch.bfloat16",
+    "gpu": "NVIDIA GeForce RTX 5080",
+    "gpu_memory_bytes": 17094475776,
+    "torch_cuda_version": "12.8",
+    "runtime_source_sha256": {
+      "word_graph/inference.py": "8ea7ebb941b5735e3e118b960b23c2d66a2cfe76af06f68fcb0c177610b4b812",
+      "word_graph/topology.py": "aaa0ed833715ff6dbb692a429a98c0f52052defe2407f5ee92dd9e35079f1a1d",
+      "word_graph/constraints.py": "f3a97919d3063cc780222494e5269ef098aa1ad7a0d52144b27625e211f3370b",
+      "word_graph/schemas.py": "4917dbf2e26113f10a2a8bc711c384bbea2b8163110b2d5362770397e75454be",
+      "word_graph/config.py": "2eb1b98c40618cdcc7ab67d2ab332fa71e0d91a0737288849e4358dbaef311b4"
+    },
+    "evaluation_source_sha256": {
+      "evaluation/run.py": "358b6fe1987b2cd429f2989609d4f4b36bdc396614fea9ffe41823b4022b0113",
+      "evaluation/metrics.py": "fd405856154266f9da8d6e9e4e9df458d8e48c15b51fe1db602c5be1f79e5c64"
+    },
+    "packages": {
+      "torch": "2.7.1+cu128",
+      "transformers": "4.55.4",
+      "pydantic": "2.11.7",
+      "lm-format-enforcer": "0.11.3"
+    },
+    "last_checkpoint_at_utc": "2026-10-15T12:18:46+00:00",
+    "sample_selected_at_utc": "2026-10-15T12:09:50+00:00",
+    "inference_finished_at_utc": "2026-10-15T12:18:46+00:00"
+  },
+  "settings": {
+    "max_degree": 3,
+    "sample_size": 50,
+    "seed": 42,
+    "quantization": "bf16",
+    "sampling": "Uniform without replacement over all successful topology predictions; selected before descriptions."
+  },
+  "scoring_metadata": {
+    "scored_at_utc": "2026-10-15T16:57:32+00:00",
+    "method": "reference-pairs-v1; sampled-type-alias-cycles-v2",
+    "source_sha256": {
+      "evaluation/run.py": "984c9546dd539018c6a36d37f8af4083d392b568920fc27f85d496ec8e85101b",
+      "evaluation/metrics.py": "eaa6600d55ace2bfe9d7aeea27e26e32e06811d9167bb8a7172dfc963d8d008e"
+    }
+  },
+  "scoring_scope": {
+    "connections": "Unordered predicted pairs versus listed reference direct-hypernym pairs, across every case including inference failures as empty predictions.",
+    "interpretation": "A reference mismatch is not proof that a conceptual connection is factually false. This selected benchmark is not an estimate for every domain.",
+    "sampled_labels": "Exact predicate and direction only within the uniformly sampled endpoint-pair universe; this is conditional sample recall, not end-to-end full-graph label recall.",
+    "cycles": "Undirected topology cycles and directed type-hierarchy cycles are separate. Only described sampled edges using the listed type aliases can be checked; reverse superclass aliases are reoriented for this diagnostic only. This does not establish absence of cycles in undescribed or unrecognized edges. Exact labelled matching does not normalize aliases.",
+    "structure": "Structure summaries use successful cases; failed cases remain in connection recall and are listed explicitly."
+  },
+  "coverage": {
+    "case_count": 8,
+    "successful_cases": 8,
+    "failed_cases": 0,
+    "pending_cases": 0,
+    "requested_sample_size": 50,
+    "selected_sample_size": 50,
+    "sample_shortfall": 0,
+    "completed_descriptions": 50,
+    "failed_descriptions": 0,
+    "pending_descriptions": 0
+  },
+  "connection_matching": {
+    "micro": {
+      "true_positive": 41,
+      "false_positive": 39,
+      "false_negative": 66,
+      "precision": 0.5125,
+      "recall": 0.38317757009345793,
+      "f1": 0.4385026737967914,
+      "precision_denominator": 80,
+      "recall_denominator": 107
+    },
+    "macro": {
+      "precision": 0.5135385447885448,
+      "recall": 0.3845602926485279,
+      "f1": 0.4340532153032153
+    },
+    "case_count": 8
+  },
+  "reference_degree_ceiling": {
+    "reference_connections": 107,
+    "maximum_reference_connections_under_degree_cap": 102,
+    "maximum_micro_recall_under_degree_cap": 0.9532710280373832
+  },
+  "structure": {
+    "successful_case_count": 8,
+    "node_count": 129,
+    "isolated_count": 32,
+    "isolated_rate": 0.24806201550387597,
+    "maximum_degree": 3,
+    "self_loop_count": 0,
+    "duplicate_or_reverse_pair_count": 0,
+    "unknown_endpoint_count": 0,
+    "undirected_cycle_rank": 5,
+    "degree_cap_violation_count": 0,
+    "universal_hub_count": 0,
+    "maximum_neighbor_fraction": 0.2
+  },
+  "sampled_label_matching": {
+    "micro": {
+      "true_positive": 0,
+      "false_positive": 50,
+      "false_negative": 26,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "precision_denominator": 50,
+      "recall_denominator": 26
+    },
+    "macro": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "case_count": 8
+  },
+  "sampled_hierarchy": {
+    "evaluated_subclass_edge_count": 32,
+    "recognized_predicate_counts": {
+      "isA": 32
+    },
+    "ignored_supported_predicate_counts": {
+      "drainsFrom": 1,
+      "hasAncestor": 1,
+      "hasPart": 3,
+      "isAModeOfTransport": 1,
+      "isARootVegetable": 1,
+      "isNot": 1,
+      "isPartOf": 1,
+      "isPredatoryOf": 2,
+      "isProducedBy": 1,
+      "practicedBy": 1,
+      "printsFrom": 1,
+      "teaches": 3,
+      "worksWith": 1
+    },
+    "predicate_rules": {
+      "normalization": "Case-insensitive; underscores removed for this cycle diagnostic only.",
+      "child_to_parent": [
+        "subClassOf",
+        "isA",
+        "is_a",
+        "typeOf",
+        "kindOf",
+        "isTypeOf",
+        "isKindOf"
+      ],
+      "parent_to_child_reversed": [
+        "superClassOf",
+        "hasSubclass",
+        "hasSubtype"
+      ]
+    },
+    "directed_subclass_cycle_component_count": 0
+  },
+  "manual_review": {
+    "sample_size": 50,
+    "reviewed_count": 50,
+    "factual_accuracy_counts": {
+      "incorrect": 39,
+      "correct": 6,
+      "uncertain": 5
+    },
+    "direction_counts": {
+      "reversed": 29,
+      "uncertain": 10,
+      "correct": 9,
+      "not_applicable": 2
+    },
+    "factual_accuracy_over_reviewed": 0.12,
+    "direction_correct_over_applicable_reviewed": 0.1875,
+    "joint_factual_and_direction_correct_over_reviewed": 0.12
+  },
+  "cases": [
+    {
+      "id": "mammals",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 9,
+        "false_positive": 4,
+        "false_negative": 4,
+        "precision": 0.6923076923076923,
+        "recall": 0.6923076923076923,
+        "f1": 0.6923076923076923,
+        "precision_denominator": 13,
+        "recall_denominator": 13,
+        "predicted_connections": 13,
+        "reference_connections": 13
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 13,
+        "reference_maximum_degree": 4,
+        "reference_nodes_above_degree_cap": [
+          "canine"
+        ],
+        "maximum_reference_connections_under_degree_cap": 12,
+        "maximum_recall_under_degree_cap": 0.9230769230769231
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 13,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 1,
+        "isolated_rate": 0.0625,
+        "isolated_nodes": [
+          "mammal"
+        ],
+        "component_count": 4,
+        "components": [
+          [
+            "placental",
+            "carnivore",
+            "equine",
+            "horse",
+            "cetacean",
+            "whale",
+            "bat"
+          ],
+          [
+            "canine",
+            "dog",
+            "wolf",
+            "fox"
+          ],
+          [
+            "feline",
+            "cat",
+            "big cat",
+            "lion"
+          ],
+          [
+            "mammal"
+          ]
+        ],
+        "degree": {
+          "mammal": 0,
+          "placental": 1,
+          "carnivore": 3,
+          "canine": 3,
+          "dog": 1,
+          "wolf": 1,
+          "fox": 1,
+          "feline": 2,
+          "cat": 1,
+          "big cat": 2,
+          "lion": 1,
+          "equine": 2,
+          "horse": 1,
+          "cetacean": 3,
+          "whale": 1,
+          "bat": 3
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 1,
+        "undirected_cycle_closing_edges": [
+          {
+            "source": "carnivore",
+            "target": "cetacean"
+          }
+        ]
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 11,
+        "false_negative": 7,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 11,
+        "recall_denominator": 7,
+        "sampled_connections": 11,
+        "supported_descriptions": 11,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 7,
+        "recognized_predicate_counts": {
+          "isA": 7
+        },
+        "ignored_supported_predicate_counts": {
+          "hasAncestor": 1,
+          "isNot": 1,
+          "isPredatoryOf": 2
+        },
+        "predicate_rules": {
+          "normalization": "Case-insensitive; underscores removed for this cycle diagnostic only.",
+          "child_to_parent": [
+            "subClassOf",
+            "isA",
+            "is_a",
+            "typeOf",
+            "kindOf",
+            "isTypeOf",
+            "isKindOf"
+          ],
+          "parent_to_child_reversed": [
+            "superClassOf",
+            "hasSubclass",
+            "hasSubtype"
+          ]
+        },
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 42.906,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "birds",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 6,
+        "false_positive": 1,
+        "false_negative": 5,
+        "precision": 0.8571428571428571,
+        "recall": 0.5454545454545454,
+        "f1": 0.6666666666666665,
+        "precision_denominator": 7,
+        "recall_denominator": 11,
+        "predicted_connections": 7,
+        "reference_connections": 11
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 11,
+        "reference_maximum_degree": 4,
+        "reference_nodes_above_degree_cap": [
+          "bird of prey"
+        ],
+        "maximum_reference_connections_under_degree_cap": 10,
+        "maximum_recall_under_degree_cap": 0.9090909090909091
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 7,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 5,
+        "isolated_rate": 0.3125,
+        "isolated_nodes": [
+          "owl",
+          "eagle",
+          "hawk",
+          "domestic fowl",
+          "chicken"
+        ],
+        "component_count": 9,
+        "components": [
+          [
+            "bird",
+            "vertebrate",
+            "bird of prey",
+            "anseriform bird",
+            "duck"
+          ],
+          [
+            "columbiform bird",
+            "pigeon"
+          ],
+          [
+            "passerine",
+            "sparrow"
+          ],
+          [
+            "sphenisciform seabird",
+            "penguin"
+          ],
+          [
+            "chicken"
+          ],
+          [
+            "domestic fowl"
+          ],
+          [
+            "eagle"
+          ],
+          [
+            "hawk"
+          ],
+          [
+            "owl"
+          ]
+        ],
+        "degree": {
+          "bird": 3,
+          "vertebrate": 1,
+          "bird of prey": 1,
+          "owl": 0,
+          "eagle": 0,
+          "hawk": 0,
+          "anseriform bird": 2,
+          "duck": 1,
+          "domestic fowl": 0,
+          "chicken": 0,
+          "columbiform bird": 1,
+          "pigeon": 1,
+          "sphenisciform seabird": 1,
+          "penguin": 1,
+          "passerine": 1,
+          "sparrow": 1
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 0,
+        "undirected_cycle_closing_edges": []
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 4,
+        "false_negative": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 4,
+        "recall_denominator": 4,
+        "sampled_connections": 4,
+        "supported_descriptions": 4,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 4,
+        "recognized_predicate_counts": {
+          "isA": 4
+        },
+        "ignored_supported_predicate_counts": {},
+        "predicate_rules": {
+          "normalization": "Case-insensitive; underscores removed for this cycle diagnostic only.",
+          "child_to_parent": [
+            "subClassOf",
+            "isA",
+            "is_a",
+            "typeOf",
+            "kindOf",
+            "isTypeOf",
+            "isKindOf"
+          ],
+          "parent_to_child_reversed": [
+            "superClassOf",
+            "hasSubclass",
+            "hasSubtype"
+          ]
+        },
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 23.25,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "vehicles",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 6,
+        "false_positive": 3,
+        "false_negative": 6,
+        "precision": 0.6666666666666666,
+        "recall": 0.5,
+        "f1": 0.5714285714285715,
+        "precision_denominator": 9,
+        "recall_denominator": 12,
+        "predicted_connections": 9,
+        "reference_connections": 12
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 12,
+        "reference_maximum_degree": 3,
+        "reference_nodes_above_degree_cap": [],
+        "maximum_reference_connections_under_degree_cap": 12,
+        "maximum_recall_under_degree_cap": 1.0
+      },
+      "structure": {
+        "node_count": 17,
+        "unique_connection_count": 9,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 4,
+        "isolated_rate": 0.23529411764705882,
+        "isolated_nodes": [
+          "vehicle",
+          "motorcycle",
+          "bicycle",
+          "heavier-than-air craft"
+        ],
+        "component_count": 8,
+        "components": [
+          [
+            "wheeled vehicle",
+            "motor vehicle",
+            "car",
+            "truck"
+          ],
+          [
+            "aircraft",
+            "airplane",
+            "helicopter"
+          ],
+          [
+            "public transport",
+            "bus",
+            "train"
+          ],
+          [
+            "vessel",
+            "boat",
+            "ship"
+          ],
+          [
+            "bicycle"
+          ],
+          [
+            "heavier-than-air craft"
+          ],
+          [
+            "motorcycle"
+          ],
+          [
+            "vehicle"
+          ]
+        ],
+        "degree": {
+          "vehicle": 0,
+          "wheeled vehicle": 1,
+          "motor vehicle": 3,
+          "car": 1,
+          "truck": 1,
+          "motorcycle": 0,
+          "bicycle": 0,
+          "public transport": 2,
+          "bus": 1,
+          "train": 1,
+          "vessel": 2,
+          "boat": 1,
+          "ship": 1,
+          "aircraft": 2,
+          "heavier-than-air craft": 0,
+          "airplane": 1,
+          "helicopter": 1
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.1875,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 0,
+        "undirected_cycle_closing_edges": []
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 6,
+        "false_negative": 5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 6,
+        "recall_denominator": 5,
+        "sampled_connections": 6,
+        "supported_descriptions": 6,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 5,
+        "recognized_predicate_counts": {
+          "isA": 5
+        },
+        "ignored_supported_predicate_counts": {
+          "isAModeOfTransport": 1
+        },
+        "predicate_rules": {
+          "normalization": "Case-insensitive; underscores removed for this cycle diagnostic only.",
+          "child_to_parent": [
+            "subClassOf",
+            "isA",
+            "is_a",
+            "typeOf",
+            "kindOf",
+            "isTypeOf",
+            "isKindOf"
+          ],
+          "parent_to_child_reversed": [
+            "superClassOf",
+            "hasSubclass",
+            "hasSubtype"
+          ]
+        },
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 52.656,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "food",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 5,
+        "false_positive": 8,
+        "false_negative": 9,
+        "precision": 0.38461538461538464,
+        "recall": 0.35714285714285715,
+        "f1": 0.3703703703703704,
+        "precision_denominator": 13,
+        "recall_denominator": 14,
+        "predicted_connections": 13,
+        "reference_connections": 14
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 14,
+        "reference_maximum_degree": 3,
+        "reference_nodes_above_degree_cap": [],
+        "maximum_reference_connections_under_degree_cap": 14,
+        "maximum_recall_under_degree_cap": 1.0
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 13,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 1,
+        "isolated_rate": 0.0625,
+        "isolated_nodes": [
+          "bread"
+        ],
+        "component_count": 3,
+        "components": [
+          [
+            "vegetable",
+            "carrot",
+            "potato",
+            "edible fruit",
+            "apple",
+            "citrus",
+            "orange",
+            "lemon"
+          ],
+          [
+            "food",
+            "produce",
+            "root vegetable",
+            "baked goods",
+            "starches",
+            "grain",
+            "rice"
+          ],
+          [
+            "bread"
+          ]
+        ],
+        "degree": {
+          "food": 3,
+          "produce": 2,
+          "vegetable": 3,
+          "root vegetable": 1,
+          "carrot": 1,
+          "potato": 1,
+          "edible fruit": 3,
+          "apple": 1,
+          "citrus": 3,
+          "orange": 1,
+          "lemon": 1,
+          "baked goods": 1,
+          "bread": 0,
+          "starches": 3,
+          "grain": 1,
+          "rice": 1
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 0,
+        "undirected_cycle_closing_edges": []
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 9,
+        "false_negative": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 9,
+        "recall_denominator": 4,
+        "sampled_connections": 9,
+        "supported_descriptions": 9,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 6,
+        "recognized_predicate_counts": {
+          "isA": 6
+        },
+        "ignored_supported_predicate_counts": {
+          "isARootVegetable": 1,
+          "isPartOf": 1,
+          "isProducedBy": 1
+        },
+        "predicate_rules": {
+          "normalization": "Case-insensitive; underscores removed for this cycle diagnostic only.",
+          "child_to_parent": [
+            "subClassOf",
+            "isA",
+            "is_a",
+            "typeOf",
+            "kindOf",
+            "isTypeOf",
+            "isKindOf"
+          ],
+          "parent_to_child_reversed": [
+            "superClassOf",
+            "hasSubclass",
+            "hasSubtype"
+          ]
+        },
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 32.125,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "musical_instruments",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 8,
+        "false_positive": 2,
+        "false_negative": 9,
+        "precision": 0.8,
+        "recall": 0.47058823529411764,
+        "f1": 0.5925925925925927,
+        "precision_denominator": 10,
+        "recall_denominator": 17,
+        "predicted_connections": 10,
+        "reference_connections": 17
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 17,
+        "reference_maximum_degree": 4,
+        "reference_nodes_above_degree_cap": [
+          "musical instrument",
+          "stringed instrument"
+        ],
+        "maximum_reference_connections_under_degree_cap": 16,
+        "maximum_recall_under_degree_cap": 0.9411764705882353
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 10,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 2,
+        "isolated_rate": 0.125,
+        "isolated_nodes": [
+          "musical instrument",
+          "cello"
+        ],
+        "component_count": 6,
+        "components": [
+          [
+            "wind instrument",
+            "woodwind",
+            "flute",
+            "brass instrument",
+            "trumpet",
+            "trombone"
+          ],
+          [
+            "stringed instrument",
+            "bowed stringed instrument",
+            "guitar",
+            "violin"
+          ],
+          [
+            "keyboard instrument",
+            "piano"
+          ],
+          [
+            "percussion instrument",
+            "drum"
+          ],
+          [
+            "cello"
+          ],
+          [
+            "musical instrument"
+          ]
+        ],
+        "degree": {
+          "musical instrument": 0,
+          "stringed instrument": 1,
+          "bowed stringed instrument": 3,
+          "guitar": 1,
+          "violin": 1,
+          "cello": 0,
+          "keyboard instrument": 1,
+          "piano": 1,
+          "wind instrument": 1,
+          "woodwind": 3,
+          "flute": 1,
+          "brass instrument": 3,
+          "trumpet": 1,
+          "trombone": 1,
+          "percussion instrument": 1,
+          "drum": 1
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 0,
+        "undirected_cycle_closing_edges": []
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 4,
+        "false_negative": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 4,
+        "recall_denominator": 3,
+        "sampled_connections": 4,
+        "supported_descriptions": 4,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 4,
+        "recognized_predicate_counts": {
+          "isA": 4
+        },
+        "ignored_supported_predicate_counts": {},
+        "predicate_rules": {
+          "normalization": "Case-insensitive; underscores removed for this cycle diagnostic only.",
+          "child_to_parent": [
+            "subClassOf",
+            "isA",
+            "is_a",
+            "typeOf",
+            "kindOf",
+            "isTypeOf",
+            "isKindOf"
+          ],
+          "parent_to_child_reversed": [
+            "superClassOf",
+            "hasSubclass",
+            "hasSubtype"
+          ]
+        },
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 37.734,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "anatomy",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 1,
+        "false_positive": 10,
+        "false_negative": 12,
+        "precision": 0.09090909090909091,
+        "recall": 0.07692307692307693,
+        "f1": 0.08333333333333334,
+        "precision_denominator": 11,
+        "recall_denominator": 13,
+        "predicted_connections": 11,
+        "reference_connections": 13
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 13,
+        "reference_maximum_degree": 5,
+        "reference_nodes_above_degree_cap": [
+          "internal organ"
+        ],
+        "maximum_reference_connections_under_degree_cap": 11,
+        "maximum_recall_under_degree_cap": 0.8461538461538461
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 11,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 7,
+        "isolated_rate": 0.4375,
+        "isolated_nodes": [
+          "body part",
+          "organ",
+          "internal organ",
+          "excretory organ",
+          "respiratory organ",
+          "skin",
+          "body covering"
+        ],
+        "component_count": 8,
+        "components": [
+          [
+            "heart",
+            "liver",
+            "kidney",
+            "lung",
+            "blood vessel",
+            "artery",
+            "vein",
+            "connective tissue",
+            "bone"
+          ],
+          [
+            "body covering"
+          ],
+          [
+            "body part"
+          ],
+          [
+            "excretory organ"
+          ],
+          [
+            "internal organ"
+          ],
+          [
+            "organ"
+          ],
+          [
+            "respiratory organ"
+          ],
+          [
+            "skin"
+          ]
+        ],
+        "degree": {
+          "body part": 0,
+          "organ": 0,
+          "internal organ": 0,
+          "heart": 3,
+          "liver": 3,
+          "excretory organ": 0,
+          "kidney": 3,
+          "respiratory organ": 0,
+          "lung": 2,
+          "blood vessel": 3,
+          "artery": 3,
+          "vein": 3,
+          "connective tissue": 1,
+          "bone": 1,
+          "skin": 0,
+          "body covering": 0
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 3,
+        "undirected_cycle_closing_edges": [
+          {
+            "source": "blood vessel",
+            "target": "kidney"
+          },
+          {
+            "source": "blood vessel",
+            "target": "lung"
+          },
+          {
+            "source": "liver",
+            "target": "vein"
+          }
+        ]
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 4,
+        "false_negative": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 4,
+        "recall_denominator": 0,
+        "sampled_connections": 4,
+        "supported_descriptions": 4,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 0,
+        "recognized_predicate_counts": {},
+        "ignored_supported_predicate_counts": {
+          "drainsFrom": 1,
+          "hasPart": 3
+        },
+        "predicate_rules": {
+          "normalization": "Case-insensitive; underscores removed for this cycle diagnostic only.",
+          "child_to_parent": [
+            "subClassOf",
+            "isA",
+            "is_a",
+            "typeOf",
+            "kindOf",
+            "isTypeOf",
+            "isKindOf"
+          ],
+          "parent_to_child_reversed": [
+            "superClassOf",
+            "hasSubclass",
+            "hasSubtype"
+          ]
+        },
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 43.25,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "occupations",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 5,
+        "false_positive": 7,
+        "false_negative": 9,
+        "precision": 0.4166666666666667,
+        "recall": 0.35714285714285715,
+        "f1": 0.3846153846153846,
+        "precision_denominator": 12,
+        "recall_denominator": 14,
+        "predicted_connections": 12,
+        "reference_connections": 14
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 14,
+        "reference_maximum_degree": 3,
+        "reference_nodes_above_degree_cap": [],
+        "maximum_reference_connections_under_degree_cap": 14,
+        "maximum_recall_under_degree_cap": 1.0
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 12,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 3,
+        "isolated_rate": 0.1875,
+        "isolated_nodes": [
+          "person",
+          "medical practitioner",
+          "dentist"
+        ],
+        "component_count": 5,
+        "components": [
+          [
+            "worker",
+            "skilled worker",
+            "professional",
+            "health professional",
+            "doctor",
+            "surgeon",
+            "nurse",
+            "educator",
+            "teacher"
+          ],
+          [
+            "craftsman",
+            "woodworker",
+            "carpenter",
+            "electrician"
+          ],
+          [
+            "dentist"
+          ],
+          [
+            "medical practitioner"
+          ],
+          [
+            "person"
+          ]
+        ],
+        "degree": {
+          "person": 0,
+          "worker": 2,
+          "skilled worker": 2,
+          "professional": 2,
+          "health professional": 3,
+          "medical practitioner": 0,
+          "doctor": 3,
+          "surgeon": 1,
+          "dentist": 0,
+          "nurse": 1,
+          "educator": 3,
+          "teacher": 1,
+          "craftsman": 3,
+          "woodworker": 1,
+          "carpenter": 1,
+          "electrician": 1
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 1,
+        "undirected_cycle_closing_edges": [
+          {
+            "source": "skilled worker",
+            "target": "worker"
+          }
+        ]
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 8,
+        "false_negative": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 8,
+        "recall_denominator": 3,
+        "sampled_connections": 8,
+        "supported_descriptions": 8,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 3,
+        "recognized_predicate_counts": {
+          "isA": 3
+        },
+        "ignored_supported_predicate_counts": {
+          "practicedBy": 1,
+          "teaches": 3,
+          "worksWith": 1
+        },
+        "predicate_rules": {
+          "normalization": "Case-insensitive; underscores removed for this cycle diagnostic only.",
+          "child_to_parent": [
+            "subClassOf",
+            "isA",
+            "is_a",
+            "typeOf",
+            "kindOf",
+            "isTypeOf",
+            "isKindOf"
+          ],
+          "parent_to_child_reversed": [
+            "superClassOf",
+            "hasSubclass",
+            "hasSubtype"
+          ]
+        },
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 31.625,
+      "topology_model_calls": 1
+    },
+    {
+      "id": "computing",
+      "state": "done",
+      "connection_matching": {
+        "true_positive": 1,
+        "false_positive": 4,
+        "false_negative": 12,
+        "precision": 0.2,
+        "recall": 0.07692307692307693,
+        "f1": 0.1111111111111111,
+        "precision_denominator": 5,
+        "recall_denominator": 13,
+        "predicted_connections": 5,
+        "reference_connections": 13
+      },
+      "reference_degree_ceiling": {
+        "reference_connections": 13,
+        "reference_maximum_degree": 3,
+        "reference_nodes_above_degree_cap": [],
+        "maximum_reference_connections_under_degree_cap": 13,
+        "maximum_recall_under_degree_cap": 1.0
+      },
+      "structure": {
+        "node_count": 16,
+        "unique_connection_count": 5,
+        "self_loop_count": 0,
+        "self_loops": [],
+        "duplicate_or_reverse_pair_count": 0,
+        "duplicate_or_reverse_pairs": [],
+        "unknown_endpoint_count": 0,
+        "unknown_endpoints": [],
+        "isolated_count": 9,
+        "isolated_rate": 0.5625,
+        "isolated_nodes": [
+          "machine",
+          "desktop computer",
+          "server",
+          "software",
+          "code",
+          "operating system",
+          "program",
+          "compiler",
+          "interpreter"
+        ],
+        "component_count": 11,
+        "components": [
+          [
+            "computer",
+            "portable computer",
+            "laptop",
+            "personal computer"
+          ],
+          [
+            "device",
+            "keyboard",
+            "printer"
+          ],
+          [
+            "code"
+          ],
+          [
+            "compiler"
+          ],
+          [
+            "desktop computer"
+          ],
+          [
+            "interpreter"
+          ],
+          [
+            "machine"
+          ],
+          [
+            "operating system"
+          ],
+          [
+            "program"
+          ],
+          [
+            "server"
+          ],
+          [
+            "software"
+          ]
+        ],
+        "degree": {
+          "machine": 0,
+          "computer": 3,
+          "portable computer": 1,
+          "laptop": 1,
+          "personal computer": 1,
+          "desktop computer": 0,
+          "server": 0,
+          "software": 0,
+          "code": 0,
+          "operating system": 0,
+          "program": 0,
+          "compiler": 0,
+          "interpreter": 0,
+          "device": 2,
+          "keyboard": 1,
+          "printer": 1
+        },
+        "maximum_degree": 3,
+        "degree_cap": 3,
+        "degree_cap_violations": [],
+        "maximum_neighbor_fraction": 0.2,
+        "universal_hubs": [],
+        "undirected_cycle_rank": 0,
+        "undirected_cycle_closing_edges": []
+      },
+      "sampled_label_matching": {
+        "true_positive": 0,
+        "false_positive": 4,
+        "false_negative": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_denominator": 4,
+        "recall_denominator": 0,
+        "sampled_connections": 4,
+        "supported_descriptions": 4,
+        "description_failures": 0,
+        "abstentions": 0
+      },
+      "sampled_hierarchy": {
+        "evaluated_subclass_edge_count": 3,
+        "recognized_predicate_counts": {
+          "isA": 3
+        },
+        "ignored_supported_predicate_counts": {
+          "printsFrom": 1
+        },
+        "predicate_rules": {
+          "normalization": "Case-insensitive; underscores removed for this cycle diagnostic only.",
+          "child_to_parent": [
+            "subClassOf",
+            "isA",
+            "is_a",
+            "typeOf",
+            "kindOf",
+            "isTypeOf",
+            "isKindOf"
+          ],
+          "parent_to_child_reversed": [
+            "superClassOf",
+            "hasSubclass",
+            "hasSubtype"
+          ]
+        },
+        "directed_subclass_cycle_component_count": 0,
+        "directed_subclass_cycle_components": []
+      },
+      "topology_elapsed_seconds": 31.906,
+      "topology_model_calls": 1
+    }
+  ]
+}

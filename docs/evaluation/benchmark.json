@@ -1,0 +1,1401 @@
+{
+  "benchmark_id": "wordnet-3.0-nouns-v1",
+  "source": {
+    "name": "Princeton WordNet",
+    "version": "3.0",
+    "url": "https://wordnet.princeton.edu/",
+    "archive_url": "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/wordnet.zip",
+    "archive_sha256": "cbda5ea6eef7f36a97a43d4a75f85e07fccbb4f23657d27b4ccbc93e2646ab59",
+    "relationship": "direct hypernym",
+    "license_file": "WORDNET-LICENSE.txt"
+  },
+  "selection": {
+    "method": "Preselected familiar noun senses and intermediate categories in eight subject areas; no model-output-based selection.",
+    "gold_policy": "Every WordNet hypernyms() link with both endpoints in the case; no transitive closure, instance links, or added commonsense relations.",
+    "model_input": "Only case.terms; no synset identifiers, definitions, or ground-truth edges.",
+    "sense_limitation": "Gold senses are explicit, but the model receives ambiguous surface words; sense disagreement is a benchmark error even when another reading is plausible."
+  },
+  "cases": [
+    {
+      "id": "mammals",
+      "terms": [
+        "mammal",
+        "placental",
+        "carnivore",
+        "canine",
+        "dog",
+        "wolf",
+        "fox",
+        "feline",
+        "cat",
+        "big cat",
+        "lion",
+        "equine",
+        "horse",
+        "cetacean",
+        "whale",
+        "bat"
+      ],
+      "term_senses": {
+        "mammal": {
+          "synset": "mammal.n.01",
+          "offset": 1861778,
+          "definition": "any warm-blooded vertebrate having the skin more or less covered with hair; young are born alive except for the small subclass of monotremes and nourished with milk"
+        },
+        "placental": {
+          "synset": "placental.n.01",
+          "offset": 1886756,
+          "definition": "mammals having a placenta; all mammals except monotremes and marsupials"
+        },
+        "carnivore": {
+          "synset": "carnivore.n.01",
+          "offset": 2075296,
+          "definition": "a terrestrial or aquatic flesh-eating mammal"
+        },
+        "canine": {
+          "synset": "canine.n.02",
+          "offset": 2083346,
+          "definition": "any of various fissiped mammals with nonretractile claws and typically long muzzles"
+        },
+        "dog": {
+          "synset": "dog.n.01",
+          "offset": 2084071,
+          "definition": "a member of the genus Canis (probably descended from the common wolf) that has been domesticated by man since prehistoric times; occurs in many breeds"
+        },
+        "wolf": {
+          "synset": "wolf.n.01",
+          "offset": 2114100,
+          "definition": "any of various predatory carnivorous canine mammals of North America and Eurasia that usually hunt in packs"
+        },
+        "fox": {
+          "synset": "fox.n.01",
+          "offset": 2118333,
+          "definition": "alert carnivorous mammal with pointed muzzle and ears and a bushy tail; most are predators that do not hunt in packs"
+        },
+        "feline": {
+          "synset": "feline.n.01",
+          "offset": 2120997,
+          "definition": "any of various lithe-bodied roundheaded fissiped mammals, many with retractile claws"
+        },
+        "cat": {
+          "synset": "cat.n.01",
+          "offset": 2121620,
+          "definition": "feline mammal usually having thick soft fur and no ability to roar: domestic cats; wildcats"
+        },
+        "big cat": {
+          "synset": "big_cat.n.01",
+          "offset": 2127808,
+          "definition": "any of several large cats typically able to roar and living in the wild"
+        },
+        "lion": {
+          "synset": "lion.n.01",
+          "offset": 2129165,
+          "definition": "large gregarious predatory feline of Africa and India having a tawny coat with a shaggy mane in the male"
+        },
+        "equine": {
+          "synset": "equine.n.01",
+          "offset": 2374149,
+          "definition": "hoofed mammals having slender legs and a flat coat with a narrow mane along the back of the neck"
+        },
+        "horse": {
+          "synset": "horse.n.01",
+          "offset": 2374451,
+          "definition": "solid-hoofed herbivorous quadruped domesticated since prehistoric times"
+        },
+        "cetacean": {
+          "synset": "cetacean.n.01",
+          "offset": 2062430,
+          "definition": "large aquatic carnivorous mammal with fin-like forelimbs no hind limbs, including: whales; dolphins; porpoises; narwhals"
+        },
+        "whale": {
+          "synset": "whale.n.02",
+          "offset": 2062744,
+          "definition": "any of the larger cetacean mammals having a streamlined body and breathing through a blowhole on the head"
+        },
+        "bat": {
+          "synset": "bat.n.01",
+          "offset": 2139199,
+          "definition": "nocturnal mouselike mammal with forelimbs modified to form membranous wings and anatomical adaptations for echolocation by which they navigate"
+        }
+      },
+      "ground_truth_edges": [
+        {
+          "source": "placental",
+          "target": "mammal",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "carnivore",
+          "target": "placental",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "canine",
+          "target": "carnivore",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "dog",
+          "target": "canine",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "wolf",
+          "target": "canine",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "fox",
+          "target": "canine",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "feline",
+          "target": "carnivore",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "cat",
+          "target": "feline",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "big cat",
+          "target": "feline",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "lion",
+          "target": "big cat",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "horse",
+          "target": "equine",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "whale",
+          "target": "cetacean",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "bat",
+          "target": "placental",
+          "predicate": "subClassOf"
+        }
+      ]
+    },
+    {
+      "id": "birds",
+      "terms": [
+        "bird",
+        "vertebrate",
+        "bird of prey",
+        "owl",
+        "eagle",
+        "hawk",
+        "anseriform bird",
+        "duck",
+        "domestic fowl",
+        "chicken",
+        "columbiform bird",
+        "pigeon",
+        "sphenisciform seabird",
+        "penguin",
+        "passerine",
+        "sparrow"
+      ],
+      "term_senses": {
+        "bird": {
+          "synset": "bird.n.01",
+          "offset": 1503061,
+          "definition": "warm-blooded egg-laying vertebrates characterized by feathers and forelimbs modified as wings"
+        },
+        "vertebrate": {
+          "synset": "vertebrate.n.01",
+          "offset": 1471682,
+          "definition": "animals having a bony or cartilaginous skeleton with a segmented spinal column and a large brain enclosed in a skull or cranium"
+        },
+        "bird of prey": {
+          "synset": "bird_of_prey.n.01",
+          "offset": 1604330,
+          "definition": "any of numerous carnivorous birds that hunt and kill other animals"
+        },
+        "owl": {
+          "synset": "owl.n.01",
+          "offset": 1621127,
+          "definition": "nocturnal bird of prey with hawk-like beak and claws and large head with front-facing eyes"
+        },
+        "eagle": {
+          "synset": "eagle.n.01",
+          "offset": 1613294,
+          "definition": "any of various large keen-sighted diurnal birds of prey noted for their broad wings and strong soaring flight"
+        },
+        "hawk": {
+          "synset": "hawk.n.01",
+          "offset": 1605630,
+          "definition": "diurnal bird of prey typically having short rounded wings and a long tail"
+        },
+        "anseriform bird": {
+          "synset": "anseriform_bird.n.01",
+          "offset": 1845477,
+          "definition": "chiefly web-footed swimming birds"
+        },
+        "duck": {
+          "synset": "duck.n.01",
+          "offset": 1846331,
+          "definition": "small wild or domesticated web-footed broad-billed swimming bird usually having a depressed body and short legs"
+        },
+        "domestic fowl": {
+          "synset": "domestic_fowl.n.01",
+          "offset": 1789740,
+          "definition": "a domesticated gallinaceous bird thought to be descended from the red jungle fowl"
+        },
+        "chicken": {
+          "synset": "chicken.n.02",
+          "offset": 1791625,
+          "definition": "a domestic fowl bred for flesh or eggs; believed to have been developed from the red jungle fowl"
+        },
+        "columbiform bird": {
+          "synset": "columbiform_bird.n.01",
+          "offset": 1810700,
+          "definition": "a cosmopolitan order of land birds having small heads and short legs with four unwebbed toes"
+        },
+        "pigeon": {
+          "synset": "pigeon.n.01",
+          "offset": 1811909,
+          "definition": "wild and domesticated birds having a heavy body and short legs"
+        },
+        "sphenisciform seabird": {
+          "synset": "sphenisciform_seabird.n.01",
+          "offset": 2055658,
+          "definition": "flightless cold-water seabirds: penguins"
+        },
+        "penguin": {
+          "synset": "penguin.n.01",
+          "offset": 2055803,
+          "definition": "short-legged flightless birds of cold southern especially Antarctic regions having webbed feet and wings modified as flippers"
+        },
+        "passerine": {
+          "synset": "passerine.n.01",
+          "offset": 1524359,
+          "definition": "perching birds mostly small and living near the ground with feet having 4 toes arranged to allow for gripping the perch; most are songbirds; hatchlings are helpless"
+        },
+        "sparrow": {
+          "synset": "sparrow.n.01",
+          "offset": 1539573,
+          "definition": "any of several small dull-colored singing birds feeding on seeds or insects"
+        }
+      },
+      "ground_truth_edges": [
+        {
+          "source": "bird",
+          "target": "vertebrate",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "bird of prey",
+          "target": "bird",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "owl",
+          "target": "bird of prey",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "eagle",
+          "target": "bird of prey",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "hawk",
+          "target": "bird of prey",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "duck",
+          "target": "anseriform bird",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "chicken",
+          "target": "domestic fowl",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "pigeon",
+          "target": "columbiform bird",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "penguin",
+          "target": "sphenisciform seabird",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "passerine",
+          "target": "bird",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "sparrow",
+          "target": "passerine",
+          "predicate": "subClassOf"
+        }
+      ]
+    },
+    {
+      "id": "vehicles",
+      "terms": [
+        "vehicle",
+        "wheeled vehicle",
+        "motor vehicle",
+        "car",
+        "truck",
+        "motorcycle",
+        "bicycle",
+        "public transport",
+        "bus",
+        "train",
+        "vessel",
+        "boat",
+        "ship",
+        "aircraft",
+        "heavier-than-air craft",
+        "airplane",
+        "helicopter"
+      ],
+      "term_senses": {
+        "vehicle": {
+          "synset": "vehicle.n.01",
+          "offset": 4524313,
+          "definition": "a conveyance that transports people or objects"
+        },
+        "wheeled vehicle": {
+          "synset": "wheeled_vehicle.n.01",
+          "offset": 4576211,
+          "definition": "a vehicle that moves on wheels and usually has a container for transporting things or people"
+        },
+        "motor vehicle": {
+          "synset": "motor_vehicle.n.01",
+          "offset": 3791235,
+          "definition": "a self-propelled wheeled vehicle that does not run on rails"
+        },
+        "car": {
+          "synset": "car.n.01",
+          "offset": 2958343,
+          "definition": "a motor vehicle with four wheels; usually propelled by an internal combustion engine"
+        },
+        "truck": {
+          "synset": "truck.n.01",
+          "offset": 4490091,
+          "definition": "an automotive vehicle suitable for hauling"
+        },
+        "motorcycle": {
+          "synset": "motorcycle.n.01",
+          "offset": 3790512,
+          "definition": "a motor vehicle with two wheels and a strong frame"
+        },
+        "bicycle": {
+          "synset": "bicycle.n.01",
+          "offset": 2834778,
+          "definition": "a wheeled vehicle that has two wheels and is moved by foot pedals"
+        },
+        "public transport": {
+          "synset": "public_transport.n.01",
+          "offset": 4019101,
+          "definition": "conveyance for passengers or mail or freight"
+        },
+        "bus": {
+          "synset": "bus.n.01",
+          "offset": 2924116,
+          "definition": "a vehicle carrying many passengers; used for public transport"
+        },
+        "train": {
+          "synset": "train.n.01",
+          "offset": 4468005,
+          "definition": "public transport provided by a line of railway cars coupled together and drawn by a locomotive"
+        },
+        "vessel": {
+          "synset": "vessel.n.02",
+          "offset": 4530566,
+          "definition": "a craft designed for water transportation"
+        },
+        "boat": {
+          "synset": "boat.n.01",
+          "offset": 2858304,
+          "definition": "a small vessel for travel on water"
+        },
+        "ship": {
+          "synset": "ship.n.01",
+          "offset": 4194289,
+          "definition": "a vessel that carries passengers or freight"
+        },
+        "aircraft": {
+          "synset": "aircraft.n.01",
+          "offset": 2686568,
+          "definition": "a vehicle that can fly"
+        },
+        "heavier-than-air craft": {
+          "synset": "heavier-than-air_craft.n.01",
+          "offset": 3510583,
+          "definition": "a non-buoyant aircraft that requires a source of power to hold it aloft and to propel it"
+        },
+        "airplane": {
+          "synset": "airplane.n.01",
+          "offset": 2691156,
+          "definition": "an aircraft that has a fixed wing and is powered by propellers or jets"
+        },
+        "helicopter": {
+          "synset": "helicopter.n.01",
+          "offset": 3512147,
+          "definition": "an aircraft without wings that obtains its lift from the rotation of overhead blades"
+        }
+      },
+      "ground_truth_edges": [
+        {
+          "source": "wheeled vehicle",
+          "target": "vehicle",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "car",
+          "target": "motor vehicle",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "truck",
+          "target": "motor vehicle",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "motorcycle",
+          "target": "motor vehicle",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "bicycle",
+          "target": "wheeled vehicle",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "bus",
+          "target": "public transport",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "train",
+          "target": "public transport",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "boat",
+          "target": "vessel",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "ship",
+          "target": "vessel",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "heavier-than-air craft",
+          "target": "aircraft",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "airplane",
+          "target": "heavier-than-air craft",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "helicopter",
+          "target": "heavier-than-air craft",
+          "predicate": "subClassOf"
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "terms": [
+        "food",
+        "produce",
+        "vegetable",
+        "root vegetable",
+        "carrot",
+        "potato",
+        "edible fruit",
+        "apple",
+        "citrus",
+        "orange",
+        "lemon",
+        "baked goods",
+        "bread",
+        "starches",
+        "grain",
+        "rice"
+      ],
+      "term_senses": {
+        "food": {
+          "synset": "food.n.01",
+          "offset": 21265,
+          "definition": "any substance that can be metabolized by an animal to give energy and build tissue"
+        },
+        "produce": {
+          "synset": "produce.n.01",
+          "offset": 7705711,
+          "definition": "fresh fruits and vegetable grown for the market"
+        },
+        "vegetable": {
+          "synset": "vegetable.n.01",
+          "offset": 7707451,
+          "definition": "edible seeds or roots or stems or leaves or bulbs or tubers or nonsweet fruits of any of numerous herbaceous plant"
+        },
+        "root vegetable": {
+          "synset": "root_vegetable.n.01",
+          "offset": 7710283,
+          "definition": "any of various fleshy edible underground roots or tubers"
+        },
+        "carrot": {
+          "synset": "carrot.n.03",
+          "offset": 7730207,
+          "definition": "orange root; important source of carotene"
+        },
+        "potato": {
+          "synset": "potato.n.01",
+          "offset": 7710616,
+          "definition": "an edible tuber native to South America; a staple food of Ireland"
+        },
+        "edible fruit": {
+          "synset": "edible_fruit.n.01",
+          "offset": 7705931,
+          "definition": "edible reproductive body of a seed plant especially one having sweet flesh"
+        },
+        "apple": {
+          "synset": "apple.n.01",
+          "offset": 7739125,
+          "definition": "fruit with red or yellow or green skin and sweet to tart crisp whitish flesh"
+        },
+        "citrus": {
+          "synset": "citrus.n.01",
+          "offset": 7747055,
+          "definition": "any of numerous fruits of the genus Citrus having thick rind and juicy pulp; grown in warm regions"
+        },
+        "orange": {
+          "synset": "orange.n.01",
+          "offset": 7747607,
+          "definition": "round yellow to orange fruit of any of several citrus trees"
+        },
+        "lemon": {
+          "synset": "lemon.n.01",
+          "offset": 7749582,
+          "definition": "yellow oval fruit with juicy acidic flesh"
+        },
+        "baked goods": {
+          "synset": "baked_goods.n.01",
+          "offset": 7622061,
+          "definition": "foods (like breads and cakes and pastries) that are cooked in an oven"
+        },
+        "bread": {
+          "synset": "bread.n.01",
+          "offset": 7679356,
+          "definition": "food made from dough of flour or meal and usually raised with yeast or baking powder and then baked"
+        },
+        "starches": {
+          "synset": "starches.n.01",
+          "offset": 7566863,
+          "definition": "foodstuff rich in natural starch (especially potatoes, rice, bread)"
+        },
+        "grain": {
+          "synset": "grain.n.02",
+          "offset": 7802417,
+          "definition": "foodstuff prepared from the starchy grains of cereal grasses"
+        },
+        "rice": {
+          "synset": "rice.n.01",
+          "offset": 7804323,
+          "definition": "grains used as food either unpolished or more often polished"
+        }
+      },
+      "ground_truth_edges": [
+        {
+          "source": "vegetable",
+          "target": "produce",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "root vegetable",
+          "target": "vegetable",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "carrot",
+          "target": "root vegetable",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "potato",
+          "target": "root vegetable",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "potato",
+          "target": "starches",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "edible fruit",
+          "target": "produce",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "apple",
+          "target": "edible fruit",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "citrus",
+          "target": "edible fruit",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "orange",
+          "target": "citrus",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "lemon",
+          "target": "citrus",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "bread",
+          "target": "baked goods",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "bread",
+          "target": "starches",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "rice",
+          "target": "grain",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "rice",
+          "target": "starches",
+          "predicate": "subClassOf"
+        }
+      ]
+    },
+    {
+      "id": "musical_instruments",
+      "terms": [
+        "musical instrument",
+        "stringed instrument",
+        "bowed stringed instrument",
+        "guitar",
+        "violin",
+        "cello",
+        "keyboard instrument",
+        "piano",
+        "wind instrument",
+        "woodwind",
+        "flute",
+        "brass instrument",
+        "trumpet",
+        "trombone",
+        "percussion instrument",
+        "drum"
+      ],
+      "term_senses": {
+        "musical instrument": {
+          "synset": "musical_instrument.n.01",
+          "offset": 3800933,
+          "definition": "any of various devices or contrivances that can be used to produce musical tones or sounds"
+        },
+        "stringed instrument": {
+          "synset": "stringed_instrument.n.01",
+          "offset": 4338517,
+          "definition": "a musical instrument in which taut strings provide the source of sound"
+        },
+        "bowed stringed instrument": {
+          "synset": "bowed_stringed_instrument.n.01",
+          "offset": 2880546,
+          "definition": "stringed instruments that are played with a bow"
+        },
+        "guitar": {
+          "synset": "guitar.n.01",
+          "offset": 3467517,
+          "definition": "a stringed instrument usually having six strings; played by strumming or plucking"
+        },
+        "violin": {
+          "synset": "violin.n.01",
+          "offset": 4536866,
+          "definition": "bowed stringed instrument that is the highest member of the violin family; this instrument has four strings and a hollow body and an unfretted fingerboard and is played with a bow"
+        },
+        "cello": {
+          "synset": "cello.n.01",
+          "offset": 2992211,
+          "definition": "a large stringed instrument; seated player holds it upright while playing"
+        },
+        "keyboard instrument": {
+          "synset": "keyboard_instrument.n.01",
+          "offset": 3614532,
+          "definition": "a musical instrument that is played by means of a keyboard"
+        },
+        "piano": {
+          "synset": "piano.n.01",
+          "offset": 3928116,
+          "definition": "a keyboard instrument that is played by depressing keys that cause hammers to strike tuned strings and produce sounds"
+        },
+        "wind instrument": {
+          "synset": "wind_instrument.n.01",
+          "offset": 4586932,
+          "definition": "a musical instrument in which the sound is produced by an enclosed column of air that is moved by the breath"
+        },
+        "woodwind": {
+          "synset": "woodwind.n.01",
+          "offset": 4598582,
+          "definition": "any wind instrument other than the brass instruments"
+        },
+        "flute": {
+          "synset": "flute.n.01",
+          "offset": 3372029,
+          "definition": "a high-pitched woodwind instrument; a slender tube closed at one end with finger holes on one end and an opening near the closed end across which the breath is blown"
+        },
+        "brass instrument": {
+          "synset": "brass.n.02",
+          "offset": 2891788,
+          "definition": "a wind instrument that consists of a brass tube (usually of variable length) that is blown by means of a cup-shaped or funnel-shaped mouthpiece"
+        },
+        "trumpet": {
+          "synset": "cornet.n.01",
+          "offset": 3110669,
+          "definition": "a brass musical instrument with a brilliant tone; has a narrow tube and a flared bell and is played by means of valves"
+        },
+        "trombone": {
+          "synset": "trombone.n.01",
+          "offset": 4487394,
+          "definition": "a brass instrument consisting of a long tube whose length can be varied by a U-shaped slide"
+        },
+        "percussion instrument": {
+          "synset": "percussion_instrument.n.01",
+          "offset": 3915437,
+          "definition": "a musical instrument in which the sound is produced by one object striking another"
+        },
+        "drum": {
+          "synset": "drum.n.01",
+          "offset": 3249569,
+          "definition": "a musical percussion instrument; usually consists of a hollow cylinder with a membrane stretched across each end"
+        }
+      },
+      "ground_truth_edges": [
+        {
+          "source": "stringed instrument",
+          "target": "musical instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "bowed stringed instrument",
+          "target": "stringed instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "guitar",
+          "target": "stringed instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "violin",
+          "target": "bowed stringed instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "cello",
+          "target": "bowed stringed instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "keyboard instrument",
+          "target": "musical instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "piano",
+          "target": "keyboard instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "piano",
+          "target": "percussion instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "piano",
+          "target": "stringed instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "wind instrument",
+          "target": "musical instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "woodwind",
+          "target": "wind instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "flute",
+          "target": "woodwind",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "brass instrument",
+          "target": "wind instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "trumpet",
+          "target": "brass instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "trombone",
+          "target": "brass instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "percussion instrument",
+          "target": "musical instrument",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "drum",
+          "target": "percussion instrument",
+          "predicate": "subClassOf"
+        }
+      ]
+    },
+    {
+      "id": "anatomy",
+      "terms": [
+        "body part",
+        "organ",
+        "internal organ",
+        "heart",
+        "liver",
+        "excretory organ",
+        "kidney",
+        "respiratory organ",
+        "lung",
+        "blood vessel",
+        "artery",
+        "vein",
+        "connective tissue",
+        "bone",
+        "skin",
+        "body covering"
+      ],
+      "term_senses": {
+        "body part": {
+          "synset": "body_part.n.01",
+          "offset": 5220461,
+          "definition": "any part of an organism such as an organ or extremity"
+        },
+        "organ": {
+          "synset": "organ.n.01",
+          "offset": 5297523,
+          "definition": "a fully differentiated structural and functional unit in an animal that is specialized for some particular function"
+        },
+        "internal organ": {
+          "synset": "internal_organ.n.01",
+          "offset": 5298729,
+          "definition": "a main organ that is situated inside the body"
+        },
+        "heart": {
+          "synset": "heart.n.02",
+          "offset": 5388805,
+          "definition": "the hollow muscular organ located behind the sternum and between the lungs; its rhythmic contractions move the blood through the body"
+        },
+        "liver": {
+          "synset": "liver.n.01",
+          "offset": 5385534,
+          "definition": "large and complicated reddish-brown glandular organ located in the upper right portion of the abdominal cavity; secretes bile and functions in metabolism of protein and carbohydrate and fat; synthesizes substances involved in the clotting of the blood; synthesizes vitamin A; detoxifies poisonous substances and breaks down worn-out erythrocytes"
+        },
+        "excretory organ": {
+          "synset": "excretory_organ.n.01",
+          "offset": 5333259,
+          "definition": "an organ that separates waste substances from the blood and discharges them"
+        },
+        "kidney": {
+          "synset": "kidney.n.01",
+          "offset": 5332802,
+          "definition": "either of two bean-shaped excretory organs that filter wastes (especially urea) from the blood and excrete them and water in urine"
+        },
+        "respiratory organ": {
+          "synset": "respiratory_organ.n.01",
+          "offset": 5528060,
+          "definition": "any organ involved in the process of respiration"
+        },
+        "lung": {
+          "synset": "lung.n.01",
+          "offset": 5387544,
+          "definition": "either of two saclike respiratory organs in the chest of vertebrates; serves to remove carbon dioxide and provide oxygen to the blood"
+        },
+        "blood vessel": {
+          "synset": "blood_vessel.n.01",
+          "offset": 5417975,
+          "definition": "a vessel in which blood circulates"
+        },
+        "artery": {
+          "synset": "artery.n.01",
+          "offset": 5333777,
+          "definition": "a blood vessel that carries blood from the heart to the body"
+        },
+        "vein": {
+          "synset": "vein.n.01",
+          "offset": 5418717,
+          "definition": "a blood vessel that carries blood from the capillaries toward the heart"
+        },
+        "connective tissue": {
+          "synset": "connective_tissue.n.01",
+          "offset": 5286536,
+          "definition": "tissue of mesodermal origin consisting of e.g. collagen fibroblasts and fatty cells; supports organs and fills spaces between them and forms tendons and ligaments"
+        },
+        "bone": {
+          "synset": "bone.n.01",
+          "offset": 5269901,
+          "definition": "rigid connective tissue that makes up the skeleton of vertebrates"
+        },
+        "skin": {
+          "synset": "skin.n.01",
+          "offset": 5238282,
+          "definition": "a natural protective body covering and site of the sense of touch"
+        },
+        "body covering": {
+          "synset": "body_covering.n.01",
+          "offset": 5237755,
+          "definition": "any covering for the body or a body part"
+        }
+      },
+      "ground_truth_edges": [
+        {
+          "source": "organ",
+          "target": "body part",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "internal organ",
+          "target": "organ",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "heart",
+          "target": "internal organ",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "liver",
+          "target": "internal organ",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "excretory organ",
+          "target": "internal organ",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "kidney",
+          "target": "excretory organ",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "respiratory organ",
+          "target": "internal organ",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "lung",
+          "target": "respiratory organ",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "artery",
+          "target": "blood vessel",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "vein",
+          "target": "blood vessel",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "bone",
+          "target": "connective tissue",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "skin",
+          "target": "body covering",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "skin",
+          "target": "connective tissue",
+          "predicate": "subClassOf"
+        }
+      ]
+    },
+    {
+      "id": "occupations",
+      "terms": [
+        "person",
+        "worker",
+        "skilled worker",
+        "professional",
+        "health professional",
+        "medical practitioner",
+        "doctor",
+        "surgeon",
+        "dentist",
+        "nurse",
+        "educator",
+        "teacher",
+        "craftsman",
+        "woodworker",
+        "carpenter",
+        "electrician"
+      ],
+      "term_senses": {
+        "person": {
+          "synset": "person.n.01",
+          "offset": 7846,
+          "definition": "a human being"
+        },
+        "worker": {
+          "synset": "worker.n.01",
+          "offset": 9632518,
+          "definition": "a person who works at a specific occupation"
+        },
+        "skilled worker": {
+          "synset": "skilled_worker.n.01",
+          "offset": 10605985,
+          "definition": "a worker who has acquired special skills"
+        },
+        "professional": {
+          "synset": "professional.n.01",
+          "offset": 10480253,
+          "definition": "a person engaged in one of the learned professions"
+        },
+        "health professional": {
+          "synset": "health_professional.n.01",
+          "offset": 10165109,
+          "definition": "a person who helps in identifying or preventing or treating illness or disability"
+        },
+        "medical practitioner": {
+          "synset": "medical_practitioner.n.01",
+          "offset": 10305802,
+          "definition": "someone who practices medicine"
+        },
+        "doctor": {
+          "synset": "doctor.n.01",
+          "offset": 10020890,
+          "definition": "a licensed medical practitioner"
+        },
+        "surgeon": {
+          "synset": "surgeon.n.01",
+          "offset": 10679174,
+          "definition": "a physician who specializes in surgery"
+        },
+        "dentist": {
+          "synset": "dentist.n.01",
+          "offset": 10004282,
+          "definition": "a person qualified to practice dentistry"
+        },
+        "nurse": {
+          "synset": "nurse.n.01",
+          "offset": 10366966,
+          "definition": "one skilled in caring for young children or the sick (usually under the supervision of a physician)"
+        },
+        "educator": {
+          "synset": "educator.n.01",
+          "offset": 10045713,
+          "definition": "someone who educates young people"
+        },
+        "teacher": {
+          "synset": "teacher.n.01",
+          "offset": 10694258,
+          "definition": "a person whose occupation is teaching"
+        },
+        "craftsman": {
+          "synset": "craftsman.n.03",
+          "offset": 9974648,
+          "definition": "a skilled worker who practices some trade or handicraft"
+        },
+        "woodworker": {
+          "synset": "woodworker.n.01",
+          "offset": 10790192,
+          "definition": "makes things out of wood"
+        },
+        "carpenter": {
+          "synset": "carpenter.n.01",
+          "offset": 9896685,
+          "definition": "a woodworker who makes or repairs wooden objects"
+        },
+        "electrician": {
+          "synset": "electrician.n.01",
+          "offset": 10049363,
+          "definition": "a person who installs or repairs electrical or telephone lines"
+        }
+      },
+      "ground_truth_edges": [
+        {
+          "source": "worker",
+          "target": "person",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "skilled worker",
+          "target": "worker",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "health professional",
+          "target": "professional",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "medical practitioner",
+          "target": "health professional",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "doctor",
+          "target": "medical practitioner",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "surgeon",
+          "target": "doctor",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "dentist",
+          "target": "medical practitioner",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "nurse",
+          "target": "health professional",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "educator",
+          "target": "professional",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "teacher",
+          "target": "educator",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "craftsman",
+          "target": "skilled worker",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "woodworker",
+          "target": "craftsman",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "carpenter",
+          "target": "woodworker",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "electrician",
+          "target": "skilled worker",
+          "predicate": "subClassOf"
+        }
+      ]
+    },
+    {
+      "id": "computing",
+      "terms": [
+        "machine",
+        "computer",
+        "portable computer",
+        "laptop",
+        "personal computer",
+        "desktop computer",
+        "server",
+        "software",
+        "code",
+        "operating system",
+        "program",
+        "compiler",
+        "interpreter",
+        "device",
+        "keyboard",
+        "printer"
+      ],
+      "term_senses": {
+        "machine": {
+          "synset": "machine.n.01",
+          "offset": 3699975,
+          "definition": "any mechanical or electrical device that transmits or modifies energy to perform or assist in the performance of human tasks"
+        },
+        "computer": {
+          "synset": "computer.n.01",
+          "offset": 3082979,
+          "definition": "a machine for performing calculations automatically"
+        },
+        "portable computer": {
+          "synset": "portable_computer.n.01",
+          "offset": 3985232,
+          "definition": "a personal computer that can easily be carried by hand"
+        },
+        "laptop": {
+          "synset": "laptop.n.01",
+          "offset": 3642806,
+          "definition": "a portable computer small enough to use in your lap"
+        },
+        "personal computer": {
+          "synset": "personal_computer.n.01",
+          "offset": 3918480,
+          "definition": "a small digital computer based on a microprocessor and designed to be used by one person at a time"
+        },
+        "desktop computer": {
+          "synset": "desktop_computer.n.01",
+          "offset": 3180011,
+          "definition": "a personal computer small enough to fit conveniently in an individual workspace"
+        },
+        "server": {
+          "synset": "server.n.03",
+          "offset": 4175147,
+          "definition": "(computer science) a computer that provides client stations with access to files and printers as shared resources to a computer network"
+        },
+        "software": {
+          "synset": "software.n.01",
+          "offset": 6566077,
+          "definition": "(computer science) written programs or procedures or rules and associated documentation pertaining to the operation of a computer system and that are stored in read/write memory"
+        },
+        "code": {
+          "synset": "code.n.03",
+          "offset": 6355894,
+          "definition": "(computer science) the symbolic arrangement of data or instructions in a computer program or the set of such instructions"
+        },
+        "operating system": {
+          "synset": "operating_system.n.01",
+          "offset": 6568134,
+          "definition": "(computer science) software that controls the execution of computer programs and may provide various services"
+        },
+        "program": {
+          "synset": "program.n.07",
+          "offset": 6568978,
+          "definition": "(computer science) a sequence of instructions that a computer can interpret and execute"
+        },
+        "compiler": {
+          "synset": "compiler.n.02",
+          "offset": 6573600,
+          "definition": "(computer science) a program that decodes instructions written in a higher order language and produces an assembly language program"
+        },
+        "interpreter": {
+          "synset": "interpreter.n.04",
+          "offset": 6575932,
+          "definition": "(computer science) a program that translates and executes source language statements one line at a time"
+        },
+        "device": {
+          "synset": "device.n.01",
+          "offset": 3183080,
+          "definition": "an instrumentality invented for a particular purpose"
+        },
+        "keyboard": {
+          "synset": "keyboard.n.01",
+          "offset": 3614007,
+          "definition": "device consisting of a set of keys on a piano or organ or typewriter or typesetting machine or computer or the like"
+        },
+        "printer": {
+          "synset": "printer.n.03",
+          "offset": 4004475,
+          "definition": "a machine that prints"
+        }
+      },
+      "ground_truth_edges": [
+        {
+          "source": "machine",
+          "target": "device",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "computer",
+          "target": "machine",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "portable computer",
+          "target": "personal computer",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "laptop",
+          "target": "portable computer",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "desktop computer",
+          "target": "personal computer",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "server",
+          "target": "computer",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "software",
+          "target": "code",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "operating system",
+          "target": "software",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "program",
+          "target": "software",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "compiler",
+          "target": "program",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "interpreter",
+          "target": "program",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "keyboard",
+          "target": "device",
+          "predicate": "subClassOf"
+        },
+        {
+          "source": "printer",
+          "target": "machine",
+          "predicate": "subClassOf"
+        }
+      ]
+    }
+  ]
+}

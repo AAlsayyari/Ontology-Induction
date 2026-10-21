@@ -60,10 +60,12 @@ def cluster_schema(terms):
 
 def pairs_schema(terms, subjects, limit):
     return {"type": "array", "minItems": 0, "maxItems": limit,
-            "items": {"type": "object", "additionalProperties": False,
-                      "required": ["source", "target"], "properties": {
-                          "source": {"type": "string", "enum": subjects},
-                          "target": {"type": "string", "enum": terms}}}}
+            "items": {"anyOf": [
+                {"type": "object", "additionalProperties": False,
+                 "required": ["source", "target"], "properties": {
+                     "source": {"type": "string", "enum": [source]},
+                     "target": {"type": "string", "enum": [term for term in terms if term != source]}}}
+                for source in subjects]}}
 
 
 def description_schema(pairs):

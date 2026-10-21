@@ -1,0 +1,3 @@
+# Optional: rebuild/verify docs/evaluation/benchmark.json from Princeton WordNet.
+# Running the evaluation against the committed fixture needs no extra packages.
+nltk==3.9.1

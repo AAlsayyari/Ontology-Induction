@@ -66,9 +66,10 @@ class TopologyTests(unittest.TestCase):
             if schema["type"] == "object":
                 self.assertEqual(schema["required"], terms)
                 return json.dumps(dict.fromkeys(terms, "Test domain"))
-            props = schema["items"]["properties"]
-            self.assertEqual(props["target"]["enum"], terms)
-            focus = props["source"]["enum"]
+            branches = schema["items"]["anyOf"]
+            focus = [branch["properties"]["source"]["enum"][0] for branch in branches]
+            for source, branch in zip(focus, branches):
+                self.assertEqual(branch["properties"]["target"]["enum"], [term for term in terms if term != source])
             sources.extend(focus)
             return json.dumps([{"source": focus[0], "target": terms[-1]}])
         generator._decode = decode
@@ -82,6 +83,8 @@ class TopologyTests(unittest.TestCase):
         self.assertFalse(accepts_json({"A": "Food"}, cluster_schema(["A", "B"])))
         self.assertFalse(accepts_json({"A": "{'A','B'}", "B": "Food"}, cluster_schema(["A", "B"])))
         self.assertFalse(accepts_json([{"source": "A", "target": "Unknown"}], pairs_schema(["A", "B"], ["A"], 2)))
+        self.assertFalse(accepts_json([{"source": "A", "target": "A"}], pairs_schema(["A", "B"], ["A"], 2)))
+        self.assertTrue(accepts_json([{"source": "A", "target": "B"}], pairs_schema(["A", "B"], ["A"], 2)))
         pair = ConnectedPair(source="API", target="Database")
         valid = {"explanation": "The database serves data used by the API.", "source": "Database", "target": "API",
                  "predicate": "serves", "supported": "yes"}

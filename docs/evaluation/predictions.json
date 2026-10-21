@@ -1,0 +1,2155 @@
+{
+  "schema_version": 1,
+  "metadata": {
+    "started_at_utc": "2026-10-15T12:04:39+00:00",
+    "evaluation_date_asia_riyadh": "2026-10-15",
+    "benchmark_sha256": "628360ffdfd02cd136595885d17bcc777c0a66ed5db76802b04a3c878a932df0",
+    "python_version": "3.12.12",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "model_revision": null,
+    "model_config_sha256": "eed00b17e22553979d090fa492e587e92885e328914c8e0b0b78f0a0d3576b3b",
+    "weights_index_sha256": "bc8aaa0c87d4335177e01c765f1de0db81661c67c1a72fbfb0d521b09f5ddc56",
+    "dtype": "torch.bfloat16",
+    "gpu": "NVIDIA GeForce RTX 5080",
+    "gpu_memory_bytes": 17094475776,
+    "torch_cuda_version": "12.8",
+    "runtime_source_sha256": {
+      "word_graph/inference.py": "8ea7ebb941b5735e3e118b960b23c2d66a2cfe76af06f68fcb0c177610b4b812",
+      "word_graph/topology.py": "aaa0ed833715ff6dbb692a429a98c0f52052defe2407f5ee92dd9e35079f1a1d",
+      "word_graph/constraints.py": "f3a97919d3063cc780222494e5269ef098aa1ad7a0d52144b27625e211f3370b",
+      "word_graph/schemas.py": "4917dbf2e26113f10a2a8bc711c384bbea2b8163110b2d5362770397e75454be",
+      "word_graph/config.py": "2eb1b98c40618cdcc7ab67d2ab332fa71e0d91a0737288849e4358dbaef311b4"
+    },
+    "evaluation_source_sha256": {
+      "evaluation/run.py": "358b6fe1987b2cd429f2989609d4f4b36bdc396614fea9ffe41823b4022b0113",
+      "evaluation/metrics.py": "fd405856154266f9da8d6e9e4e9df458d8e48c15b51fe1db602c5be1f79e5c64"
+    },
+    "packages": {
+      "torch": "2.7.1+cu128",
+      "transformers": "4.55.4",
+      "pydantic": "2.11.7",
+      "lm-format-enforcer": "0.11.3"
+    },
+    "last_checkpoint_at_utc": "2026-10-15T12:18:46+00:00",
+    "sample_selected_at_utc": "2026-10-15T12:09:50+00:00",
+    "inference_finished_at_utc": "2026-10-15T12:18:46+00:00"
+  },
+  "settings": {
+    "max_degree": 3,
+    "sample_size": 50,
+    "seed": 42,
+    "quantization": "bf16",
+    "sampling": "Uniform without replacement over all successful topology predictions; selected before descriptions."
+  },
+  "cases": {
+    "mammals": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T12:04:54+00:00",
+      "topology": {
+        "nodes": [
+          "mammal",
+          "placental",
+          "carnivore",
+          "canine",
+          "dog",
+          "wolf",
+          "fox",
+          "feline",
+          "cat",
+          "big cat",
+          "lion",
+          "equine",
+          "horse",
+          "cetacean",
+          "whale",
+          "bat"
+        ],
+        "clusters": [
+          {
+            "name": "crown clade",
+            "terms": [
+              "mammal"
+            ]
+          },
+          {
+            "name": "placental mammals",
+            "terms": [
+              "placental"
+            ]
+          },
+          {
+            "name": "predatory mammals",
+            "terms": [
+              "carnivore"
+            ]
+          },
+          {
+            "name": "canids",
+            "terms": [
+              "canine",
+              "dog",
+              "wolf",
+              "fox"
+            ]
+          },
+          {
+            "name": "feliforms",
+            "terms": [
+              "feline",
+              "cat",
+              "big cat",
+              "lion"
+            ]
+          },
+          {
+            "name": "equids",
+            "terms": [
+              "equine",
+              "horse"
+            ]
+          },
+          {
+            "name": "cetacea",
+            "terms": [
+              "cetacean",
+              "whale"
+            ]
+          },
+          {
+            "name": "chiroptera",
+            "terms": [
+              "bat"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "placental",
+            "target": "carnivore"
+          },
+          {
+            "source": "canine",
+            "target": "dog"
+          },
+          {
+            "source": "feline",
+            "target": "cat"
+          },
+          {
+            "source": "big cat",
+            "target": "lion"
+          },
+          {
+            "source": "equine",
+            "target": "horse"
+          },
+          {
+            "source": "cetacean",
+            "target": "whale"
+          },
+          {
+            "source": "carnivore",
+            "target": "bat"
+          },
+          {
+            "source": "canine",
+            "target": "wolf"
+          },
+          {
+            "source": "canine",
+            "target": "fox"
+          },
+          {
+            "source": "feline",
+            "target": "big cat"
+          },
+          {
+            "source": "equine",
+            "target": "bat"
+          },
+          {
+            "source": "carnivore",
+            "target": "cetacean"
+          },
+          {
+            "source": "cetacean",
+            "target": "bat"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 17,
+          "degree_pruned_pairs": [
+            {
+              "source": "carnivore",
+              "target": "canine"
+            },
+            {
+              "source": "carnivore",
+              "target": "feline"
+            },
+            {
+              "source": "carnivore",
+              "target": "equine"
+            }
+          ],
+          "isolated_terms": [
+            "mammal"
+          ]
+        }
+      },
+      "elapsed_seconds": 42.906
+    },
+    "birds": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T12:05:37+00:00",
+      "topology": {
+        "nodes": [
+          "bird",
+          "vertebrate",
+          "bird of prey",
+          "owl",
+          "eagle",
+          "hawk",
+          "anseriform bird",
+          "duck",
+          "domestic fowl",
+          "chicken",
+          "columbiform bird",
+          "pigeon",
+          "sphenisciform seabird",
+          "penguin",
+          "passerine",
+          "sparrow"
+        ],
+        "clusters": [
+          {
+            "name": "Bird",
+            "terms": [
+              "bird",
+              "owl",
+              "eagle",
+              "hawk",
+              "anseriform bird",
+              "duck",
+              "columbiform bird",
+              "pigeon",
+              "sphenisciform seabird",
+              "penguin",
+              "passerine",
+              "sparrow"
+            ]
+          },
+          {
+            "name": "Animal",
+            "terms": [
+              "vertebrate",
+              "domestic fowl",
+              "chicken"
+            ]
+          },
+          {
+            "name": "Predator",
+            "terms": [
+              "bird of prey"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "bird",
+            "target": "vertebrate"
+          },
+          {
+            "source": "anseriform bird",
+            "target": "duck"
+          },
+          {
+            "source": "columbiform bird",
+            "target": "pigeon"
+          },
+          {
+            "source": "sphenisciform seabird",
+            "target": "penguin"
+          },
+          {
+            "source": "passerine",
+            "target": "sparrow"
+          },
+          {
+            "source": "bird",
+            "target": "bird of prey"
+          },
+          {
+            "source": "bird",
+            "target": "anseriform bird"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 11,
+          "degree_pruned_pairs": [
+            {
+              "source": "bird",
+              "target": "columbiform bird"
+            },
+            {
+              "source": "bird",
+              "target": "sphenisciform seabird"
+            },
+            {
+              "source": "bird",
+              "target": "passerine"
+            },
+            {
+              "source": "bird",
+              "target": "sparrow"
+            }
+          ],
+          "isolated_terms": [
+            "owl",
+            "eagle",
+            "hawk",
+            "domestic fowl",
+            "chicken"
+          ]
+        }
+      },
+      "elapsed_seconds": 23.25
+    },
+    "vehicles": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T12:06:00+00:00",
+      "topology": {
+        "nodes": [
+          "vehicle",
+          "wheeled vehicle",
+          "motor vehicle",
+          "car",
+          "truck",
+          "motorcycle",
+          "bicycle",
+          "public transport",
+          "bus",
+          "train",
+          "vessel",
+          "boat",
+          "ship",
+          "aircraft",
+          "heavier-than-air craft",
+          "airplane",
+          "helicopter"
+        ],
+        "clusters": [
+          {
+            "name": "cars and related",
+            "terms": [
+              "vehicle"
+            ]
+          },
+          {
+            "name": "vehicles with wheels",
+            "terms": [
+              "wheeled vehicle"
+            ]
+          },
+          {
+            "name": "powered vehicles",
+            "terms": [
+              "motor vehicle"
+            ]
+          },
+          {
+            "name": "four-wheeled road vehicle",
+            "terms": [
+              "car"
+            ]
+          },
+          {
+            "name": "large motor vehicle",
+            "terms": [
+              "truck"
+            ]
+          },
+          {
+            "name": "two-wheeled vehicle",
+            "terms": [
+              "motorcycle"
+            ]
+          },
+          {
+            "name": "two-wheeled human-powered vehicle",
+            "terms": [
+              "bicycle"
+            ]
+          },
+          {
+            "name": "transportation for groups",
+            "terms": [
+              "public transport"
+            ]
+          },
+          {
+            "name": "reliable public transport",
+            "terms": [
+              "bus"
+            ]
+          },
+          {
+            "name": "railway transportation",
+            "terms": [
+              "train"
+            ]
+          },
+          {
+            "name": "watercraft",
+            "terms": [
+              "vessel"
+            ]
+          },
+          {
+            "name": "small watercraft",
+            "terms": [
+              "boat"
+            ]
+          },
+          {
+            "name": "large watercraft",
+            "terms": [
+              "ship"
+            ]
+          },
+          {
+            "name": "flying machines",
+            "terms": [
+              "aircraft"
+            ]
+          },
+          {
+            "name": "aircraft that fly",
+            "terms": [
+              "heavier-than-air craft"
+            ]
+          },
+          {
+            "name": "fixed-wing aircraft",
+            "terms": [
+              "airplane"
+            ]
+          },
+          {
+            "name": "rotary-wing aircraft",
+            "terms": [
+              "helicopter"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "wheeled vehicle",
+            "target": "motor vehicle"
+          },
+          {
+            "source": "public transport",
+            "target": "bus"
+          },
+          {
+            "source": "vessel",
+            "target": "boat"
+          },
+          {
+            "source": "aircraft",
+            "target": "airplane"
+          },
+          {
+            "source": "motor vehicle",
+            "target": "car"
+          },
+          {
+            "source": "public transport",
+            "target": "train"
+          },
+          {
+            "source": "vessel",
+            "target": "ship"
+          },
+          {
+            "source": "aircraft",
+            "target": "helicopter"
+          },
+          {
+            "source": "motor vehicle",
+            "target": "truck"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 11,
+          "degree_pruned_pairs": [
+            {
+              "source": "motor vehicle",
+              "target": "motorcycle"
+            },
+            {
+              "source": "motor vehicle",
+              "target": "bicycle"
+            }
+          ],
+          "isolated_terms": [
+            "vehicle",
+            "motorcycle",
+            "bicycle",
+            "heavier-than-air craft"
+          ]
+        }
+      },
+      "elapsed_seconds": 52.656
+    },
+    "food": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T12:06:53+00:00",
+      "topology": {
+        "nodes": [
+          "food",
+          "produce",
+          "vegetable",
+          "root vegetable",
+          "carrot",
+          "potato",
+          "edible fruit",
+          "apple",
+          "citrus",
+          "orange",
+          "lemon",
+          "baked goods",
+          "bread",
+          "starches",
+          "grain",
+          "rice"
+        ],
+        "clusters": [
+          {
+            "name": "food",
+            "terms": [
+              "food"
+            ]
+          },
+          {
+            "name": "produce",
+            "terms": [
+              "produce"
+            ]
+          },
+          {
+            "name": "vegetable",
+            "terms": [
+              "vegetable"
+            ]
+          },
+          {
+            "name": "root vegetable",
+            "terms": [
+              "root vegetable"
+            ]
+          },
+          {
+            "name": "carrot",
+            "terms": [
+              "carrot"
+            ]
+          },
+          {
+            "name": "potato",
+            "terms": [
+              "potato"
+            ]
+          },
+          {
+            "name": "edible fruit",
+            "terms": [
+              "edible fruit"
+            ]
+          },
+          {
+            "name": "apple",
+            "terms": [
+              "apple"
+            ]
+          },
+          {
+            "name": "citrus",
+            "terms": [
+              "citrus"
+            ]
+          },
+          {
+            "name": "orange",
+            "terms": [
+              "orange"
+            ]
+          },
+          {
+            "name": "lemon",
+            "terms": [
+              "lemon"
+            ]
+          },
+          {
+            "name": "baked goods",
+            "terms": [
+              "baked goods",
+              "bread"
+            ]
+          },
+          {
+            "name": "starches",
+            "terms": [
+              "starches"
+            ]
+          },
+          {
+            "name": "grain",
+            "terms": [
+              "grain"
+            ]
+          },
+          {
+            "name": "rice",
+            "terms": [
+              "rice"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "food",
+            "target": "produce"
+          },
+          {
+            "source": "vegetable",
+            "target": "carrot"
+          },
+          {
+            "source": "edible fruit",
+            "target": "apple"
+          },
+          {
+            "source": "citrus",
+            "target": "orange"
+          },
+          {
+            "source": "starches",
+            "target": "grain"
+          },
+          {
+            "source": "food",
+            "target": "baked goods"
+          },
+          {
+            "source": "produce",
+            "target": "root vegetable"
+          },
+          {
+            "source": "vegetable",
+            "target": "potato"
+          },
+          {
+            "source": "citrus",
+            "target": "lemon"
+          },
+          {
+            "source": "starches",
+            "target": "rice"
+          },
+          {
+            "source": "vegetable",
+            "target": "edible fruit"
+          },
+          {
+            "source": "food",
+            "target": "starches"
+          },
+          {
+            "source": "edible fruit",
+            "target": "citrus"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 14,
+          "degree_pruned_pairs": [
+            {
+              "source": "food",
+              "target": "vegetable"
+            }
+          ],
+          "isolated_terms": [
+            "bread"
+          ]
+        }
+      },
+      "elapsed_seconds": 32.125
+    },
+    "musical_instruments": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T12:07:25+00:00",
+      "topology": {
+        "nodes": [
+          "musical instrument",
+          "stringed instrument",
+          "bowed stringed instrument",
+          "guitar",
+          "violin",
+          "cello",
+          "keyboard instrument",
+          "piano",
+          "wind instrument",
+          "woodwind",
+          "flute",
+          "brass instrument",
+          "trumpet",
+          "trombone",
+          "percussion instrument",
+          "drum"
+        ],
+        "clusters": [
+          {
+            "name": "Musical Instrument",
+            "terms": [
+              "musical instrument"
+            ]
+          },
+          {
+            "name": "Stringed Instrument",
+            "terms": [
+              "stringed instrument"
+            ]
+          },
+          {
+            "name": "Bowed Stringed Instrument",
+            "terms": [
+              "bowed stringed instrument"
+            ]
+          },
+          {
+            "name": "Guitar",
+            "terms": [
+              "guitar"
+            ]
+          },
+          {
+            "name": "Violin",
+            "terms": [
+              "violin"
+            ]
+          },
+          {
+            "name": "Cello",
+            "terms": [
+              "cello"
+            ]
+          },
+          {
+            "name": "Keyboard Instrument",
+            "terms": [
+              "keyboard instrument"
+            ]
+          },
+          {
+            "name": "Piano",
+            "terms": [
+              "piano"
+            ]
+          },
+          {
+            "name": "Wind Instrument",
+            "terms": [
+              "wind instrument"
+            ]
+          },
+          {
+            "name": "Woodwind",
+            "terms": [
+              "woodwind"
+            ]
+          },
+          {
+            "name": "Flute",
+            "terms": [
+              "flute"
+            ]
+          },
+          {
+            "name": "Brass Instrument",
+            "terms": [
+              "brass instrument"
+            ]
+          },
+          {
+            "name": "Trumpet",
+            "terms": [
+              "trumpet"
+            ]
+          },
+          {
+            "name": "Trombone",
+            "terms": [
+              "trombone"
+            ]
+          },
+          {
+            "name": "Percussion Instrument",
+            "terms": [
+              "percussion instrument"
+            ]
+          },
+          {
+            "name": "Drum",
+            "terms": [
+              "drum"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "stringed instrument",
+            "target": "bowed stringed instrument"
+          },
+          {
+            "source": "keyboard instrument",
+            "target": "piano"
+          },
+          {
+            "source": "wind instrument",
+            "target": "woodwind"
+          },
+          {
+            "source": "brass instrument",
+            "target": "trumpet"
+          },
+          {
+            "source": "percussion instrument",
+            "target": "drum"
+          },
+          {
+            "source": "bowed stringed instrument",
+            "target": "guitar"
+          },
+          {
+            "source": "woodwind",
+            "target": "flute"
+          },
+          {
+            "source": "brass instrument",
+            "target": "trombone"
+          },
+          {
+            "source": "bowed stringed instrument",
+            "target": "violin"
+          },
+          {
+            "source": "woodwind",
+            "target": "brass instrument"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 11,
+          "degree_pruned_pairs": [
+            {
+              "source": "bowed stringed instrument",
+              "target": "cello"
+            }
+          ],
+          "isolated_terms": [
+            "musical instrument",
+            "cello"
+          ]
+        }
+      },
+      "elapsed_seconds": 37.734
+    },
+    "anatomy": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T12:08:03+00:00",
+      "topology": {
+        "nodes": [
+          "body part",
+          "organ",
+          "internal organ",
+          "heart",
+          "liver",
+          "excretory organ",
+          "kidney",
+          "respiratory organ",
+          "lung",
+          "blood vessel",
+          "artery",
+          "vein",
+          "connective tissue",
+          "bone",
+          "skin",
+          "body covering"
+        ],
+        "clusters": [
+          {
+            "name": "body covering",
+            "terms": [
+              "body part"
+            ]
+          },
+          {
+            "name": "synced",
+            "terms": [
+              "organ"
+            ]
+          },
+          {
+            "name": "intestine",
+            "terms": [
+              "internal organ"
+            ]
+          },
+          {
+            "name": "cardiovascular system",
+            "terms": [
+              "heart"
+            ]
+          },
+          {
+            "name": "hepatic system",
+            "terms": [
+              "liver"
+            ]
+          },
+          {
+            "name": "kidney",
+            "terms": [
+              "excretory organ"
+            ]
+          },
+          {
+            "name": "renal system",
+            "terms": [
+              "kidney"
+            ]
+          },
+          {
+            "name": "lung",
+            "terms": [
+              "respiratory organ"
+            ]
+          },
+          {
+            "name": "heart",
+            "terms": [
+              "lung"
+            ]
+          },
+          {
+            "name": "vascular system",
+            "terms": [
+              "blood vessel"
+            ]
+          },
+          {
+            "name": "circulatory system",
+            "terms": [
+              "artery",
+              "vein"
+            ]
+          },
+          {
+            "name": "musculoskeletal system",
+            "terms": [
+              "connective tissue"
+            ]
+          },
+          {
+            "name": "skeletal system",
+            "terms": [
+              "bone"
+            ]
+          },
+          {
+            "name": "cutaneous system",
+            "terms": [
+              "skin"
+            ]
+          },
+          {
+            "name": "epidermis",
+            "terms": [
+              "body covering"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "heart",
+            "target": "liver"
+          },
+          {
+            "source": "kidney",
+            "target": "blood vessel"
+          },
+          {
+            "source": "lung",
+            "target": "artery"
+          },
+          {
+            "source": "heart",
+            "target": "vein"
+          },
+          {
+            "source": "liver",
+            "target": "connective tissue"
+          },
+          {
+            "source": "heart",
+            "target": "bone"
+          },
+          {
+            "source": "kidney",
+            "target": "artery"
+          },
+          {
+            "source": "lung",
+            "target": "blood vessel"
+          },
+          {
+            "source": "liver",
+            "target": "vein"
+          },
+          {
+            "source": "kidney",
+            "target": "vein"
+          },
+          {
+            "source": "blood vessel",
+            "target": "artery"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 24,
+          "degree_pruned_pairs": [
+            {
+              "source": "heart",
+              "target": "lung"
+            },
+            {
+              "source": "heart",
+              "target": "kidney"
+            },
+            {
+              "source": "heart",
+              "target": "blood vessel"
+            },
+            {
+              "source": "heart",
+              "target": "artery"
+            },
+            {
+              "source": "liver",
+              "target": "blood vessel"
+            },
+            {
+              "source": "liver",
+              "target": "artery"
+            },
+            {
+              "source": "lung",
+              "target": "vein"
+            },
+            {
+              "source": "blood vessel",
+              "target": "vein"
+            },
+            {
+              "source": "artery",
+              "target": "vein"
+            },
+            {
+              "source": "heart",
+              "target": "connective tissue"
+            },
+            {
+              "source": "heart",
+              "target": "skin"
+            }
+          ],
+          "isolated_terms": [
+            "body part",
+            "organ",
+            "internal organ",
+            "excretory organ",
+            "respiratory organ",
+            "skin",
+            "body covering"
+          ]
+        }
+      },
+      "elapsed_seconds": 43.25
+    },
+    "occupations": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T12:08:46+00:00",
+      "topology": {
+        "nodes": [
+          "person",
+          "worker",
+          "skilled worker",
+          "professional",
+          "health professional",
+          "medical practitioner",
+          "doctor",
+          "surgeon",
+          "dentist",
+          "nurse",
+          "educator",
+          "teacher",
+          "craftsman",
+          "woodworker",
+          "carpenter",
+          "electrician"
+        ],
+        "clusters": [
+          {
+            "name": "General",
+            "terms": [
+              "person"
+            ]
+          },
+          {
+            "name": "Occupation",
+            "terms": [
+              "worker",
+              "skilled worker"
+            ]
+          },
+          {
+            "name": "Profession",
+            "terms": [
+              "professional"
+            ]
+          },
+          {
+            "name": "Healthcare",
+            "terms": [
+              "health professional",
+              "medical practitioner",
+              "doctor",
+              "surgeon",
+              "dentist",
+              "nurse"
+            ]
+          },
+          {
+            "name": "Education",
+            "terms": [
+              "educator",
+              "teacher"
+            ]
+          },
+          {
+            "name": "Crafts",
+            "terms": [
+              "craftsman",
+              "woodworker",
+              "carpenter",
+              "electrician"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "worker",
+            "target": "skilled worker"
+          },
+          {
+            "source": "professional",
+            "target": "health professional"
+          },
+          {
+            "source": "doctor",
+            "target": "surgeon"
+          },
+          {
+            "source": "educator",
+            "target": "teacher"
+          },
+          {
+            "source": "craftsman",
+            "target": "woodworker"
+          },
+          {
+            "source": "doctor",
+            "target": "nurse"
+          },
+          {
+            "source": "craftsman",
+            "target": "carpenter"
+          },
+          {
+            "source": "craftsman",
+            "target": "electrician"
+          },
+          {
+            "source": "worker",
+            "target": "educator"
+          },
+          {
+            "source": "skilled worker",
+            "target": "professional"
+          },
+          {
+            "source": "health professional",
+            "target": "doctor"
+          },
+          {
+            "source": "health professional",
+            "target": "educator"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 14,
+          "degree_pruned_pairs": [],
+          "isolated_terms": [
+            "person",
+            "medical practitioner",
+            "dentist"
+          ]
+        }
+      },
+      "elapsed_seconds": 31.625
+    },
+    "computing": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T12:09:18+00:00",
+      "topology": {
+        "nodes": [
+          "machine",
+          "computer",
+          "portable computer",
+          "laptop",
+          "personal computer",
+          "desktop computer",
+          "server",
+          "software",
+          "code",
+          "operating system",
+          "program",
+          "compiler",
+          "interpreter",
+          "device",
+          "keyboard",
+          "printer"
+        ],
+        "clusters": [
+          {
+            "name": "Machine",
+            "terms": [
+              "machine"
+            ]
+          },
+          {
+            "name": "Computing Device",
+            "terms": [
+              "computer",
+              "portable computer",
+              "laptop",
+              "personal computer",
+              "desktop computer",
+              "server"
+            ]
+          },
+          {
+            "name": "Software",
+            "terms": [
+              "software"
+            ]
+          },
+          {
+            "name": "Code",
+            "terms": [
+              "code"
+            ]
+          },
+          {
+            "name": "Operating System",
+            "terms": [
+              "operating system"
+            ]
+          },
+          {
+            "name": "Program",
+            "terms": [
+              "program"
+            ]
+          },
+          {
+            "name": "Compiler",
+            "terms": [
+              "compiler"
+            ]
+          },
+          {
+            "name": "Interpreter",
+            "terms": [
+              "interpreter"
+            ]
+          },
+          {
+            "name": "Device",
+            "terms": [
+              "device"
+            ]
+          },
+          {
+            "name": "Input Device",
+            "terms": [
+              "keyboard"
+            ]
+          },
+          {
+            "name": "Output Device",
+            "terms": [
+              "printer"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "computer",
+            "target": "portable computer"
+          },
+          {
+            "source": "device",
+            "target": "keyboard"
+          },
+          {
+            "source": "computer",
+            "target": "laptop"
+          },
+          {
+            "source": "device",
+            "target": "printer"
+          },
+          {
+            "source": "computer",
+            "target": "personal computer"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 12,
+          "degree_pruned_pairs": [
+            {
+              "source": "computer",
+              "target": "software"
+            },
+            {
+              "source": "computer",
+              "target": "operating system"
+            },
+            {
+              "source": "computer",
+              "target": "program"
+            },
+            {
+              "source": "computer",
+              "target": "compiler"
+            },
+            {
+              "source": "computer",
+              "target": "interpreter"
+            },
+            {
+              "source": "computer",
+              "target": "desktop computer"
+            },
+            {
+              "source": "computer",
+              "target": "server"
+            }
+          ],
+          "isolated_terms": [
+            "machine",
+            "desktop computer",
+            "server",
+            "software",
+            "code",
+            "operating system",
+            "program",
+            "compiler",
+            "interpreter"
+          ]
+        }
+      },
+      "elapsed_seconds": 31.906
+    }
+  },
+  "sample": [
+    {
+      "sample_id": "pair-001",
+      "case_id": "birds",
+      "source": "anseriform bird",
+      "target": "duck",
+      "state": "done",
+      "description": {
+        "source": "anseriform bird",
+        "target": "duck",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "An anseriform bird is a type of duck."
+      },
+      "elapsed_seconds": 11.391
+    },
+    {
+      "sample_id": "pair-002",
+      "case_id": "mammals",
+      "source": "big cat",
+      "target": "lion",
+      "state": "done",
+      "description": {
+        "source": "big cat",
+        "target": "lion",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Lion is a specific type of big cat within the feliforms crown."
+      },
+      "elapsed_seconds": 15.25
+    },
+    {
+      "sample_id": "pair-003",
+      "case_id": "food",
+      "source": "produce",
+      "target": "root vegetable",
+      "state": "done",
+      "description": {
+        "source": "root vegetable",
+        "target": "produce",
+        "supported": true,
+        "predicate": "isARootVegetable",
+        "explanation": "Carrots and potatoes are examples of root vegetables produced in gardens."
+      },
+      "elapsed_seconds": 15.0
+    },
+    {
+      "sample_id": "pair-004",
+      "case_id": "food",
+      "source": "edible fruit",
+      "target": "apple",
+      "state": "done",
+      "description": {
+        "source": "edible fruit",
+        "target": "apple",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Apple is a type of edible fruit."
+      },
+      "elapsed_seconds": 9.203
+    },
+    {
+      "sample_id": "pair-005",
+      "case_id": "vehicles",
+      "source": "motor vehicle",
+      "target": "truck",
+      "state": "done",
+      "description": {
+        "source": "motor vehicle",
+        "target": "truck",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Truck is a type of motor vehicle designed for heavy cargo."
+      },
+      "elapsed_seconds": 13.422
+    },
+    {
+      "sample_id": "pair-006",
+      "case_id": "birds",
+      "source": "passerine",
+      "target": "sparrow",
+      "state": "done",
+      "description": {
+        "source": "sparrow",
+        "target": "passerine",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Passerine is a subclass of sparrow, encompassing all sparrow species."
+      },
+      "elapsed_seconds": 14.672
+    },
+    {
+      "sample_id": "pair-007",
+      "case_id": "birds",
+      "source": "bird",
+      "target": "vertebrate",
+      "state": "done",
+      "description": {
+        "source": "bird",
+        "target": "vertebrate",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Birds are a subgroup of vertebrates."
+      },
+      "elapsed_seconds": 8.812
+    },
+    {
+      "sample_id": "pair-008",
+      "case_id": "occupations",
+      "source": "craftsman",
+      "target": "carpenter",
+      "state": "done",
+      "description": {
+        "source": "craftsman",
+        "target": "carpenter",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Craftsman is a broader category that includes carpenter as a specific type."
+      },
+      "elapsed_seconds": 14.688
+    },
+    {
+      "sample_id": "pair-009",
+      "case_id": "mammals",
+      "source": "carnivore",
+      "target": "cetacean",
+      "state": "done",
+      "description": {
+        "source": "carnivore",
+        "target": "cetacean",
+        "supported": true,
+        "predicate": "isPredatoryOf",
+        "explanation": "Carnivores are predators of cetaceans, which are marine mammals."
+      },
+      "elapsed_seconds": 14.828
+    },
+    {
+      "sample_id": "pair-010",
+      "case_id": "anatomy",
+      "source": "lung",
+      "target": "artery",
+      "state": "done",
+      "description": {
+        "source": "lung",
+        "target": "artery",
+        "supported": true,
+        "predicate": "hasPart",
+        "explanation": "Lung has arterial blood vessels that supply oxygenated blood."
+      },
+      "elapsed_seconds": 11.36
+    },
+    {
+      "sample_id": "pair-011",
+      "case_id": "mammals",
+      "source": "equine",
+      "target": "horse",
+      "state": "done",
+      "description": {
+        "source": "equine",
+        "target": "horse",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Equine is a broader taxonomic classification that includes horse."
+      },
+      "elapsed_seconds": 11.547
+    },
+    {
+      "sample_id": "pair-012",
+      "case_id": "computing",
+      "source": "device",
+      "target": "printer",
+      "state": "done",
+      "description": {
+        "source": "device",
+        "target": "printer",
+        "supported": true,
+        "predicate": "printsFrom",
+        "explanation": "Printer is used to print documents from a device."
+      },
+      "elapsed_seconds": 9.203
+    },
+    {
+      "sample_id": "pair-013",
+      "case_id": "occupations",
+      "source": "worker",
+      "target": "educator",
+      "state": "done",
+      "description": {
+        "source": "educator",
+        "target": "worker",
+        "supported": true,
+        "predicate": "teaches",
+        "explanation": "An educator teaches workers, typically in formal education settings."
+      },
+      "elapsed_seconds": 10.297
+    },
+    {
+      "sample_id": "pair-014",
+      "case_id": "vehicles",
+      "source": "aircraft",
+      "target": "helicopter",
+      "state": "done",
+      "description": {
+        "source": "helicopter",
+        "target": "aircraft",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Helicopter is a type of aircraft."
+      },
+      "elapsed_seconds": 8.015
+    },
+    {
+      "sample_id": "pair-015",
+      "case_id": "food",
+      "source": "food",
+      "target": "produce",
+      "state": "done",
+      "description": {
+        "source": "food",
+        "target": "produce",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Food encompasses produce, including vegetables and fruits."
+      },
+      "elapsed_seconds": 8.594
+    },
+    {
+      "sample_id": "pair-016",
+      "case_id": "occupations",
+      "source": "professional",
+      "target": "health professional",
+      "state": "done",
+      "description": {
+        "source": "professional",
+        "target": "health professional",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Professional is a broader category that includes health professionals."
+      },
+      "elapsed_seconds": 10.11
+    },
+    {
+      "sample_id": "pair-017",
+      "case_id": "occupations",
+      "source": "doctor",
+      "target": "nurse",
+      "state": "done",
+      "description": {
+        "source": "doctor",
+        "target": "nurse",
+        "supported": true,
+        "predicate": "worksWith",
+        "explanation": "Doctor supervises nurses in healthcare setting."
+      },
+      "elapsed_seconds": 7.985
+    },
+    {
+      "sample_id": "pair-018",
+      "case_id": "computing",
+      "source": "computer",
+      "target": "laptop",
+      "state": "done",
+      "description": {
+        "source": "computer",
+        "target": "laptop",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Laptop is a type of portable computer."
+      },
+      "elapsed_seconds": 8.657
+    },
+    {
+      "sample_id": "pair-019",
+      "case_id": "mammals",
+      "source": "cetacean",
+      "target": "bat",
+      "state": "done",
+      "description": {
+        "source": "cetacean",
+        "target": "bat",
+        "supported": true,
+        "predicate": "isNot",
+        "explanation": "Cetaceans are marine mammals, while bats are flying mammals."
+      },
+      "elapsed_seconds": 12.016
+    },
+    {
+      "sample_id": "pair-020",
+      "case_id": "musical_instruments",
+      "source": "brass instrument",
+      "target": "trumpet",
+      "state": "done",
+      "description": {
+        "source": "brass instrument",
+        "target": "trumpet",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Trumpet is a specific type of brass instrument."
+      },
+      "elapsed_seconds": 10.921
+    },
+    {
+      "sample_id": "pair-021",
+      "case_id": "food",
+      "source": "edible fruit",
+      "target": "citrus",
+      "state": "done",
+      "description": {
+        "source": "edible fruit",
+        "target": "citrus",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Citrus is a type of edible fruit."
+      },
+      "elapsed_seconds": 8.703
+    },
+    {
+      "sample_id": "pair-022",
+      "case_id": "musical_instruments",
+      "source": "wind instrument",
+      "target": "woodwind",
+      "state": "done",
+      "description": {
+        "source": "wind instrument",
+        "target": "woodwind",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Wind instrument is a subclass of woodwind."
+      },
+      "elapsed_seconds": 9.579
+    },
+    {
+      "sample_id": "pair-023",
+      "case_id": "food",
+      "source": "food",
+      "target": "baked goods",
+      "state": "done",
+      "description": {
+        "source": "food",
+        "target": "baked goods",
+        "supported": true,
+        "predicate": "isProducedBy",
+        "explanation": "Food produces baked goods through various ingredients and processes."
+      },
+      "elapsed_seconds": 11.078
+    },
+    {
+      "sample_id": "pair-024",
+      "case_id": "vehicles",
+      "source": "vessel",
+      "target": "ship",
+      "state": "done",
+      "description": {
+        "source": "vessel",
+        "target": "ship",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Ship is a type of vessel designed for ocean travel."
+      },
+      "elapsed_seconds": 9.953
+    },
+    {
+      "sample_id": "pair-025",
+      "case_id": "computing",
+      "source": "computer",
+      "target": "personal computer",
+      "state": "done",
+      "description": {
+        "source": "computer",
+        "target": "personal computer",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Personal computer is a type of computer."
+      },
+      "elapsed_seconds": 8.906
+    },
+    {
+      "sample_id": "pair-026",
+      "case_id": "computing",
+      "source": "computer",
+      "target": "portable computer",
+      "state": "done",
+      "description": {
+        "source": "computer",
+        "target": "portable computer",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Computer is a broader category that includes portable computers."
+      },
+      "elapsed_seconds": 10.078
+    },
+    {
+      "sample_id": "pair-027",
+      "case_id": "food",
+      "source": "citrus",
+      "target": "lemon",
+      "state": "done",
+      "description": {
+        "source": "citrus",
+        "target": "lemon",
+        "supported": true,
+        "predicate": "isPartOf",
+        "explanation": "Lemon is a type of citrus fruit."
+      },
+      "elapsed_seconds": 9.359
+    },
+    {
+      "sample_id": "pair-028",
+      "case_id": "occupations",
+      "source": "health professional",
+      "target": "educator",
+      "state": "done",
+      "description": {
+        "source": "educator",
+        "target": "health professional",
+        "supported": true,
+        "predicate": "teaches",
+        "explanation": "Educators often teach health professionals about their field."
+      },
+      "elapsed_seconds": 9.406
+    },
+    {
+      "sample_id": "pair-029",
+      "case_id": "musical_instruments",
+      "source": "woodwind",
+      "target": "brass instrument",
+      "state": "done",
+      "description": {
+        "source": "woodwind",
+        "target": "brass instrument",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Woodwind is a subclass of brass instrument."
+      },
+      "elapsed_seconds": 8.656
+    },
+    {
+      "sample_id": "pair-030",
+      "case_id": "mammals",
+      "source": "placental",
+      "target": "carnivore",
+      "state": "done",
+      "description": {
+        "source": "placental",
+        "target": "carnivore",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Placental mammals include carnivores like dogs and cats."
+      },
+      "elapsed_seconds": 10.688
+    },
+    {
+      "sample_id": "pair-031",
+      "case_id": "musical_instruments",
+      "source": "woodwind",
+      "target": "flute",
+      "state": "done",
+      "description": {
+        "source": "woodwind",
+        "target": "flute",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Flute is a type of woodwind musical instrument."
+      },
+      "elapsed_seconds": 9.953
+    },
+    {
+      "sample_id": "pair-032",
+      "case_id": "mammals",
+      "source": "equine",
+      "target": "bat",
+      "state": "done",
+      "description": {
+        "source": "bat",
+        "target": "equine",
+        "supported": true,
+        "predicate": "hasAncestor",
+        "explanation": "Bat is an ancestor of equine, tracing back through mammal evolution."
+      },
+      "elapsed_seconds": 13.157
+    },
+    {
+      "sample_id": "pair-033",
+      "case_id": "anatomy",
+      "source": "kidney",
+      "target": "artery",
+      "state": "done",
+      "description": {
+        "source": "kidney",
+        "target": "artery",
+        "supported": true,
+        "predicate": "hasPart",
+        "explanation": "Kidney produces artery as part of its vascular system."
+      },
+      "elapsed_seconds": 9.937
+    },
+    {
+      "sample_id": "pair-034",
+      "case_id": "occupations",
+      "source": "educator",
+      "target": "teacher",
+      "state": "done",
+      "description": {
+        "source": "educator",
+        "target": "teacher",
+        "supported": true,
+        "predicate": "teaches",
+        "explanation": "An educator trains a teacher in the field of education."
+      },
+      "elapsed_seconds": 9.938
+    },
+    {
+      "sample_id": "pair-035",
+      "case_id": "vehicles",
+      "source": "public transport",
+      "target": "bus",
+      "state": "done",
+      "description": {
+        "source": "public transport",
+        "target": "bus",
+        "supported": true,
+        "predicate": "isAModeOfTransport",
+        "explanation": "Bus is a mode of public transport."
+      },
+      "elapsed_seconds": 10.328
+    },
+    {
+      "sample_id": "pair-036",
+      "case_id": "anatomy",
+      "source": "heart",
+      "target": "liver",
+      "state": "done",
+      "description": {
+        "source": "heart",
+        "target": "liver",
+        "supported": true,
+        "predicate": "hasPart",
+        "explanation": "Heart has liver as a part within the cardiovascular system."
+      },
+      "elapsed_seconds": 10.062
+    },
+    {
+      "sample_id": "pair-037",
+      "case_id": "mammals",
+      "source": "feline",
+      "target": "big cat",
+      "state": "done",
+      "description": {
+        "source": "feline",
+        "target": "big cat",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Felines are a subgroup of big cats within the feliform crown."
+      },
+      "elapsed_seconds": 11.937
+    },
+    {
+      "sample_id": "pair-038",
+      "case_id": "occupations",
+      "source": "health professional",
+      "target": "doctor",
+      "state": "done",
+      "description": {
+        "source": "health professional",
+        "target": "doctor",
+        "supported": true,
+        "predicate": "practicedBy",
+        "explanation": "A health professional typically practices as a doctor."
+      },
+      "elapsed_seconds": 9.938
+    },
+    {
+      "sample_id": "pair-039",
+      "case_id": "anatomy",
+      "source": "liver",
+      "target": "vein",
+      "state": "done",
+      "description": {
+        "source": "liver",
+        "target": "vein",
+        "supported": true,
+        "predicate": "drainsFrom",
+        "explanation": "Liver drains blood into veins."
+      },
+      "elapsed_seconds": 7.266
+    },
+    {
+      "sample_id": "pair-040",
+      "case_id": "mammals",
+      "source": "carnivore",
+      "target": "bat",
+      "state": "done",
+      "description": {
+        "source": "bat",
+        "target": "carnivore",
+        "supported": true,
+        "predicate": "isPredatoryOf",
+        "explanation": "Bat is a carnivore that preys on insects."
+      },
+      "elapsed_seconds": 11.11
+    },
+    {
+      "sample_id": "pair-041",
+      "case_id": "mammals",
+      "source": "cetacean",
+      "target": "whale",
+      "state": "done",
+      "description": {
+        "source": "cetacean",
+        "target": "whale",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Cetaceans are a subgroup of whales, encompassing all whale species."
+      },
+      "elapsed_seconds": 13.36
+    },
+    {
+      "sample_id": "pair-042",
+      "case_id": "vehicles",
+      "source": "motor vehicle",
+      "target": "car",
+      "state": "done",
+      "description": {
+        "source": "motor vehicle",
+        "target": "car",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Car is a type of motor vehicle designed for road travel."
+      },
+      "elapsed_seconds": 10.719
+    },
+    {
+      "sample_id": "pair-043",
+      "case_id": "food",
+      "source": "food",
+      "target": "starches",
+      "state": "done",
+      "description": {
+        "source": "starches",
+        "target": "food",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Starches are a subset of food materials."
+      },
+      "elapsed_seconds": 9.406
+    },
+    {
+      "sample_id": "pair-044",
+      "case_id": "vehicles",
+      "source": "vessel",
+      "target": "boat",
+      "state": "done",
+      "description": {
+        "source": "vessel",
+        "target": "boat",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Vessel is a broader category that includes boat, which is a type of watercraft."
+      },
+      "elapsed_seconds": 14.532
+    },
+    {
+      "sample_id": "pair-045",
+      "case_id": "food",
+      "source": "vegetable",
+      "target": "potato",
+      "state": "done",
+      "description": {
+        "source": "vegetable",
+        "target": "potato",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Potato is a type of vegetable."
+      },
+      "elapsed_seconds": 8.0
+    },
+    {
+      "sample_id": "pair-046",
+      "case_id": "birds",
+      "source": "sphenisciform seabird",
+      "target": "penguin",
+      "state": "done",
+      "description": {
+        "source": "sphenisciform seabird",
+        "target": "penguin",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Sphenisciform seabird is a subclass of penguin."
+      },
+      "elapsed_seconds": 12.125
+    },
+    {
+      "sample_id": "pair-047",
+      "case_id": "mammals",
+      "source": "feline",
+      "target": "cat",
+      "state": "done",
+      "description": {
+        "source": "feline",
+        "target": "cat",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Feline is a subclass of cat, encompassing specific types of cats."
+      },
+      "elapsed_seconds": 12.547
+    },
+    {
+      "sample_id": "pair-048",
+      "case_id": "occupations",
+      "source": "doctor",
+      "target": "surgeon",
+      "state": "done",
+      "description": {
+        "source": "doctor",
+        "target": "surgeon",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Doctor is a type of surgeon who specializes in surgical procedures."
+      },
+      "elapsed_seconds": 10.609
+    },
+    {
+      "sample_id": "pair-049",
+      "case_id": "mammals",
+      "source": "canine",
+      "target": "wolf",
+      "state": "done",
+      "description": {
+        "source": "canine",
+        "target": "wolf",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Wolf is a type of canine."
+      },
+      "elapsed_seconds": 7.359
+    },
+    {
+      "sample_id": "pair-050",
+      "case_id": "food",
+      "source": "citrus",
+      "target": "orange",
+      "state": "done",
+      "description": {
+        "source": "citrus",
+        "target": "orange",
+        "supported": true,
+        "predicate": "isA",
+        "explanation": "Orange is a citrus fruit commonly eaten fresh or used in cooking."
+      },
+      "elapsed_seconds": 11.219
+    }
+  ]
+}

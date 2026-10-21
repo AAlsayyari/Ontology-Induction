@@ -1,0 +1,1593 @@
+{
+  "schema_version": 1,
+  "metadata": {
+    "started_at_utc": "2026-10-15T11:57:08+00:00",
+    "evaluation_date_asia_riyadh": "2026-10-15",
+    "benchmark_sha256": "628360ffdfd02cd136595885d17bcc777c0a66ed5db76802b04a3c878a932df0",
+    "python_version": "3.12.12",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "model_revision": null,
+    "model_config_sha256": "eed00b17e22553979d090fa492e587e92885e328914c8e0b0b78f0a0d3576b3b",
+    "weights_index_sha256": "bc8aaa0c87d4335177e01c765f1de0db81661c67c1a72fbfb0d521b09f5ddc56",
+    "dtype": "torch.bfloat16",
+    "gpu": "NVIDIA GeForce RTX 5080",
+    "gpu_memory_bytes": 17094475776,
+    "torch_cuda_version": "12.8",
+    "packages": {
+      "torch": "2.7.1+cu128",
+      "transformers": "4.55.4",
+      "pydantic": "2.11.7",
+      "lm-format-enforcer": "0.11.3"
+    },
+    "last_checkpoint_at_utc": "2026-10-15T12:02:50+00:00",
+    "sample_selected_at_utc": "2026-10-15T12:02:50+00:00",
+    "inference_finished_at_utc": "2026-10-15T12:02:50+00:00",
+    "runtime_source_commit": "a5ff34f7eb9f8bf8290258d455b3cb855c1e0c7f",
+    "run_scope": "Topology only, before the self-link decoding guard; no descriptions reviewed."
+  },
+  "settings": {
+    "max_degree": 3,
+    "sample_size": 50,
+    "seed": 42,
+    "quantization": "bf16",
+    "sampling": "Uniform without replacement over all successful topology predictions; selected before descriptions."
+  },
+  "cases": {
+    "mammals": {
+      "state": "error",
+      "started_at_utc": "2026-10-15T11:57:22+00:00",
+      "error": "ValueError: Invalid structured graph response: 1 validation error for ConnectedPair\n  Value error, A connection requires two different terms [type=value_error, input_value={'source': 'canine', 'target': 'canine'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/value_error",
+      "elapsed_seconds": 79.64
+    },
+    "birds": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T11:58:42+00:00",
+      "topology": {
+        "nodes": [
+          "bird",
+          "vertebrate",
+          "bird of prey",
+          "owl",
+          "eagle",
+          "hawk",
+          "anseriform bird",
+          "duck",
+          "domestic fowl",
+          "chicken",
+          "columbiform bird",
+          "pigeon",
+          "sphenisciform seabird",
+          "penguin",
+          "passerine",
+          "sparrow"
+        ],
+        "clusters": [
+          {
+            "name": "Bird",
+            "terms": [
+              "bird",
+              "owl",
+              "eagle",
+              "hawk",
+              "anseriform bird",
+              "duck",
+              "columbiform bird",
+              "pigeon",
+              "sphenisciform seabird",
+              "penguin",
+              "passerine",
+              "sparrow"
+            ]
+          },
+          {
+            "name": "Animal",
+            "terms": [
+              "vertebrate",
+              "domestic fowl",
+              "chicken"
+            ]
+          },
+          {
+            "name": "Predator",
+            "terms": [
+              "bird of prey"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "bird",
+            "target": "vertebrate"
+          },
+          {
+            "source": "anseriform bird",
+            "target": "duck"
+          },
+          {
+            "source": "columbiform bird",
+            "target": "pigeon"
+          },
+          {
+            "source": "sphenisciform seabird",
+            "target": "penguin"
+          },
+          {
+            "source": "passerine",
+            "target": "sparrow"
+          },
+          {
+            "source": "bird",
+            "target": "bird of prey"
+          },
+          {
+            "source": "bird",
+            "target": "anseriform bird"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 11,
+          "degree_pruned_pairs": [
+            {
+              "source": "bird",
+              "target": "columbiform bird"
+            },
+            {
+              "source": "bird",
+              "target": "sphenisciform seabird"
+            },
+            {
+              "source": "bird",
+              "target": "passerine"
+            },
+            {
+              "source": "bird",
+              "target": "sparrow"
+            }
+          ],
+          "isolated_terms": [
+            "owl",
+            "eagle",
+            "hawk",
+            "domestic fowl",
+            "chicken"
+          ]
+        }
+      },
+      "elapsed_seconds": 22.203
+    },
+    "vehicles": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T11:59:04+00:00",
+      "topology": {
+        "nodes": [
+          "vehicle",
+          "wheeled vehicle",
+          "motor vehicle",
+          "car",
+          "truck",
+          "motorcycle",
+          "bicycle",
+          "public transport",
+          "bus",
+          "train",
+          "vessel",
+          "boat",
+          "ship",
+          "aircraft",
+          "heavier-than-air craft",
+          "airplane",
+          "helicopter"
+        ],
+        "clusters": [
+          {
+            "name": "cars and related",
+            "terms": [
+              "vehicle"
+            ]
+          },
+          {
+            "name": "vehicles with wheels",
+            "terms": [
+              "wheeled vehicle"
+            ]
+          },
+          {
+            "name": "powered vehicles",
+            "terms": [
+              "motor vehicle"
+            ]
+          },
+          {
+            "name": "four-wheeled road vehicle",
+            "terms": [
+              "car"
+            ]
+          },
+          {
+            "name": "large motor vehicle",
+            "terms": [
+              "truck"
+            ]
+          },
+          {
+            "name": "two-wheeled vehicle",
+            "terms": [
+              "motorcycle"
+            ]
+          },
+          {
+            "name": "two-wheeled human-powered vehicle",
+            "terms": [
+              "bicycle"
+            ]
+          },
+          {
+            "name": "transportation for groups",
+            "terms": [
+              "public transport"
+            ]
+          },
+          {
+            "name": "reliable public transport",
+            "terms": [
+              "bus"
+            ]
+          },
+          {
+            "name": "railway transportation",
+            "terms": [
+              "train"
+            ]
+          },
+          {
+            "name": "watercraft",
+            "terms": [
+              "vessel"
+            ]
+          },
+          {
+            "name": "small watercraft",
+            "terms": [
+              "boat"
+            ]
+          },
+          {
+            "name": "large watercraft",
+            "terms": [
+              "ship"
+            ]
+          },
+          {
+            "name": "flying machines",
+            "terms": [
+              "aircraft"
+            ]
+          },
+          {
+            "name": "aircraft that fly",
+            "terms": [
+              "heavier-than-air craft"
+            ]
+          },
+          {
+            "name": "fixed-wing aircraft",
+            "terms": [
+              "airplane"
+            ]
+          },
+          {
+            "name": "rotary-wing aircraft",
+            "terms": [
+              "helicopter"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "wheeled vehicle",
+            "target": "motor vehicle"
+          },
+          {
+            "source": "public transport",
+            "target": "bus"
+          },
+          {
+            "source": "vessel",
+            "target": "boat"
+          },
+          {
+            "source": "aircraft",
+            "target": "airplane"
+          },
+          {
+            "source": "motor vehicle",
+            "target": "car"
+          },
+          {
+            "source": "public transport",
+            "target": "train"
+          },
+          {
+            "source": "vessel",
+            "target": "ship"
+          },
+          {
+            "source": "aircraft",
+            "target": "helicopter"
+          },
+          {
+            "source": "motor vehicle",
+            "target": "truck"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 11,
+          "degree_pruned_pairs": [
+            {
+              "source": "motor vehicle",
+              "target": "motorcycle"
+            },
+            {
+              "source": "motor vehicle",
+              "target": "bicycle"
+            }
+          ],
+          "isolated_terms": [
+            "vehicle",
+            "motorcycle",
+            "bicycle",
+            "heavier-than-air craft"
+          ]
+        }
+      },
+      "elapsed_seconds": 48.704
+    },
+    "food": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T11:59:53+00:00",
+      "topology": {
+        "nodes": [
+          "food",
+          "produce",
+          "vegetable",
+          "root vegetable",
+          "carrot",
+          "potato",
+          "edible fruit",
+          "apple",
+          "citrus",
+          "orange",
+          "lemon",
+          "baked goods",
+          "bread",
+          "starches",
+          "grain",
+          "rice"
+        ],
+        "clusters": [
+          {
+            "name": "food",
+            "terms": [
+              "food"
+            ]
+          },
+          {
+            "name": "produce",
+            "terms": [
+              "produce"
+            ]
+          },
+          {
+            "name": "vegetable",
+            "terms": [
+              "vegetable"
+            ]
+          },
+          {
+            "name": "root vegetable",
+            "terms": [
+              "root vegetable"
+            ]
+          },
+          {
+            "name": "carrot",
+            "terms": [
+              "carrot"
+            ]
+          },
+          {
+            "name": "potato",
+            "terms": [
+              "potato"
+            ]
+          },
+          {
+            "name": "edible fruit",
+            "terms": [
+              "edible fruit"
+            ]
+          },
+          {
+            "name": "apple",
+            "terms": [
+              "apple"
+            ]
+          },
+          {
+            "name": "citrus",
+            "terms": [
+              "citrus"
+            ]
+          },
+          {
+            "name": "orange",
+            "terms": [
+              "orange"
+            ]
+          },
+          {
+            "name": "lemon",
+            "terms": [
+              "lemon"
+            ]
+          },
+          {
+            "name": "baked goods",
+            "terms": [
+              "baked goods",
+              "bread"
+            ]
+          },
+          {
+            "name": "starches",
+            "terms": [
+              "starches"
+            ]
+          },
+          {
+            "name": "grain",
+            "terms": [
+              "grain"
+            ]
+          },
+          {
+            "name": "rice",
+            "terms": [
+              "rice"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "food",
+            "target": "produce"
+          },
+          {
+            "source": "vegetable",
+            "target": "carrot"
+          },
+          {
+            "source": "edible fruit",
+            "target": "apple"
+          },
+          {
+            "source": "citrus",
+            "target": "orange"
+          },
+          {
+            "source": "starches",
+            "target": "grain"
+          },
+          {
+            "source": "food",
+            "target": "baked goods"
+          },
+          {
+            "source": "produce",
+            "target": "root vegetable"
+          },
+          {
+            "source": "vegetable",
+            "target": "potato"
+          },
+          {
+            "source": "citrus",
+            "target": "lemon"
+          },
+          {
+            "source": "starches",
+            "target": "rice"
+          },
+          {
+            "source": "vegetable",
+            "target": "edible fruit"
+          },
+          {
+            "source": "food",
+            "target": "starches"
+          },
+          {
+            "source": "edible fruit",
+            "target": "citrus"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 14,
+          "degree_pruned_pairs": [
+            {
+              "source": "food",
+              "target": "vegetable"
+            }
+          ],
+          "isolated_terms": [
+            "bread"
+          ]
+        }
+      },
+      "elapsed_seconds": 30.531
+    },
+    "musical_instruments": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T12:00:23+00:00",
+      "topology": {
+        "nodes": [
+          "musical instrument",
+          "stringed instrument",
+          "bowed stringed instrument",
+          "guitar",
+          "violin",
+          "cello",
+          "keyboard instrument",
+          "piano",
+          "wind instrument",
+          "woodwind",
+          "flute",
+          "brass instrument",
+          "trumpet",
+          "trombone",
+          "percussion instrument",
+          "drum"
+        ],
+        "clusters": [
+          {
+            "name": "Musical Instrument",
+            "terms": [
+              "musical instrument"
+            ]
+          },
+          {
+            "name": "Stringed Instrument",
+            "terms": [
+              "stringed instrument"
+            ]
+          },
+          {
+            "name": "Bowed Stringed Instrument",
+            "terms": [
+              "bowed stringed instrument"
+            ]
+          },
+          {
+            "name": "Guitar",
+            "terms": [
+              "guitar"
+            ]
+          },
+          {
+            "name": "Violin",
+            "terms": [
+              "violin"
+            ]
+          },
+          {
+            "name": "Cello",
+            "terms": [
+              "cello"
+            ]
+          },
+          {
+            "name": "Keyboard Instrument",
+            "terms": [
+              "keyboard instrument"
+            ]
+          },
+          {
+            "name": "Piano",
+            "terms": [
+              "piano"
+            ]
+          },
+          {
+            "name": "Wind Instrument",
+            "terms": [
+              "wind instrument"
+            ]
+          },
+          {
+            "name": "Woodwind",
+            "terms": [
+              "woodwind"
+            ]
+          },
+          {
+            "name": "Flute",
+            "terms": [
+              "flute"
+            ]
+          },
+          {
+            "name": "Brass Instrument",
+            "terms": [
+              "brass instrument"
+            ]
+          },
+          {
+            "name": "Trumpet",
+            "terms": [
+              "trumpet"
+            ]
+          },
+          {
+            "name": "Trombone",
+            "terms": [
+              "trombone"
+            ]
+          },
+          {
+            "name": "Percussion Instrument",
+            "terms": [
+              "percussion instrument"
+            ]
+          },
+          {
+            "name": "Drum",
+            "terms": [
+              "drum"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "stringed instrument",
+            "target": "bowed stringed instrument"
+          },
+          {
+            "source": "keyboard instrument",
+            "target": "piano"
+          },
+          {
+            "source": "wind instrument",
+            "target": "woodwind"
+          },
+          {
+            "source": "brass instrument",
+            "target": "trumpet"
+          },
+          {
+            "source": "percussion instrument",
+            "target": "drum"
+          },
+          {
+            "source": "bowed stringed instrument",
+            "target": "guitar"
+          },
+          {
+            "source": "woodwind",
+            "target": "flute"
+          },
+          {
+            "source": "brass instrument",
+            "target": "trombone"
+          },
+          {
+            "source": "bowed stringed instrument",
+            "target": "violin"
+          },
+          {
+            "source": "woodwind",
+            "target": "brass instrument"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 11,
+          "degree_pruned_pairs": [
+            {
+              "source": "bowed stringed instrument",
+              "target": "cello"
+            }
+          ],
+          "isolated_terms": [
+            "musical instrument",
+            "cello"
+          ]
+        }
+      },
+      "elapsed_seconds": 42.422
+    },
+    "anatomy": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T12:01:06+00:00",
+      "topology": {
+        "nodes": [
+          "body part",
+          "organ",
+          "internal organ",
+          "heart",
+          "liver",
+          "excretory organ",
+          "kidney",
+          "respiratory organ",
+          "lung",
+          "blood vessel",
+          "artery",
+          "vein",
+          "connective tissue",
+          "bone",
+          "skin",
+          "body covering"
+        ],
+        "clusters": [
+          {
+            "name": "body covering",
+            "terms": [
+              "body part"
+            ]
+          },
+          {
+            "name": "synced",
+            "terms": [
+              "organ"
+            ]
+          },
+          {
+            "name": "intestine",
+            "terms": [
+              "internal organ"
+            ]
+          },
+          {
+            "name": "cardiovascular system",
+            "terms": [
+              "heart"
+            ]
+          },
+          {
+            "name": "hepatic system",
+            "terms": [
+              "liver"
+            ]
+          },
+          {
+            "name": "kidney",
+            "terms": [
+              "excretory organ"
+            ]
+          },
+          {
+            "name": "renal system",
+            "terms": [
+              "kidney"
+            ]
+          },
+          {
+            "name": "lung",
+            "terms": [
+              "respiratory organ"
+            ]
+          },
+          {
+            "name": "heart",
+            "terms": [
+              "lung"
+            ]
+          },
+          {
+            "name": "vascular system",
+            "terms": [
+              "blood vessel"
+            ]
+          },
+          {
+            "name": "circulatory system",
+            "terms": [
+              "artery",
+              "vein"
+            ]
+          },
+          {
+            "name": "musculoskeletal system",
+            "terms": [
+              "connective tissue"
+            ]
+          },
+          {
+            "name": "skeletal system",
+            "terms": [
+              "bone"
+            ]
+          },
+          {
+            "name": "cutaneous system",
+            "terms": [
+              "skin"
+            ]
+          },
+          {
+            "name": "epidermis",
+            "terms": [
+              "body covering"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "heart",
+            "target": "liver"
+          },
+          {
+            "source": "kidney",
+            "target": "blood vessel"
+          },
+          {
+            "source": "lung",
+            "target": "artery"
+          },
+          {
+            "source": "heart",
+            "target": "vein"
+          },
+          {
+            "source": "liver",
+            "target": "connective tissue"
+          },
+          {
+            "source": "heart",
+            "target": "bone"
+          },
+          {
+            "source": "kidney",
+            "target": "artery"
+          },
+          {
+            "source": "lung",
+            "target": "blood vessel"
+          },
+          {
+            "source": "liver",
+            "target": "vein"
+          },
+          {
+            "source": "kidney",
+            "target": "vein"
+          },
+          {
+            "source": "blood vessel",
+            "target": "artery"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 24,
+          "degree_pruned_pairs": [
+            {
+              "source": "heart",
+              "target": "lung"
+            },
+            {
+              "source": "heart",
+              "target": "kidney"
+            },
+            {
+              "source": "heart",
+              "target": "blood vessel"
+            },
+            {
+              "source": "heart",
+              "target": "artery"
+            },
+            {
+              "source": "liver",
+              "target": "blood vessel"
+            },
+            {
+              "source": "liver",
+              "target": "artery"
+            },
+            {
+              "source": "lung",
+              "target": "vein"
+            },
+            {
+              "source": "blood vessel",
+              "target": "vein"
+            },
+            {
+              "source": "artery",
+              "target": "vein"
+            },
+            {
+              "source": "heart",
+              "target": "connective tissue"
+            },
+            {
+              "source": "heart",
+              "target": "skin"
+            }
+          ],
+          "isolated_terms": [
+            "body part",
+            "organ",
+            "internal organ",
+            "excretory organ",
+            "respiratory organ",
+            "skin",
+            "body covering"
+          ]
+        }
+      },
+      "elapsed_seconds": 42.844
+    },
+    "occupations": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T12:01:49+00:00",
+      "topology": {
+        "nodes": [
+          "person",
+          "worker",
+          "skilled worker",
+          "professional",
+          "health professional",
+          "medical practitioner",
+          "doctor",
+          "surgeon",
+          "dentist",
+          "nurse",
+          "educator",
+          "teacher",
+          "craftsman",
+          "woodworker",
+          "carpenter",
+          "electrician"
+        ],
+        "clusters": [
+          {
+            "name": "General",
+            "terms": [
+              "person"
+            ]
+          },
+          {
+            "name": "Occupation",
+            "terms": [
+              "worker",
+              "skilled worker"
+            ]
+          },
+          {
+            "name": "Profession",
+            "terms": [
+              "professional"
+            ]
+          },
+          {
+            "name": "Healthcare",
+            "terms": [
+              "health professional",
+              "medical practitioner",
+              "doctor",
+              "surgeon",
+              "dentist",
+              "nurse"
+            ]
+          },
+          {
+            "name": "Education",
+            "terms": [
+              "educator",
+              "teacher"
+            ]
+          },
+          {
+            "name": "Crafts",
+            "terms": [
+              "craftsman",
+              "woodworker",
+              "carpenter",
+              "electrician"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "worker",
+            "target": "skilled worker"
+          },
+          {
+            "source": "professional",
+            "target": "health professional"
+          },
+          {
+            "source": "doctor",
+            "target": "surgeon"
+          },
+          {
+            "source": "educator",
+            "target": "teacher"
+          },
+          {
+            "source": "craftsman",
+            "target": "woodworker"
+          },
+          {
+            "source": "doctor",
+            "target": "nurse"
+          },
+          {
+            "source": "craftsman",
+            "target": "carpenter"
+          },
+          {
+            "source": "craftsman",
+            "target": "electrician"
+          },
+          {
+            "source": "worker",
+            "target": "educator"
+          },
+          {
+            "source": "skilled worker",
+            "target": "professional"
+          },
+          {
+            "source": "health professional",
+            "target": "doctor"
+          },
+          {
+            "source": "health professional",
+            "target": "educator"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 14,
+          "degree_pruned_pairs": [],
+          "isolated_terms": [
+            "person",
+            "medical practitioner",
+            "dentist"
+          ]
+        }
+      },
+      "elapsed_seconds": 30.375
+    },
+    "computing": {
+      "state": "done",
+      "started_at_utc": "2026-10-15T12:02:19+00:00",
+      "topology": {
+        "nodes": [
+          "machine",
+          "computer",
+          "portable computer",
+          "laptop",
+          "personal computer",
+          "desktop computer",
+          "server",
+          "software",
+          "code",
+          "operating system",
+          "program",
+          "compiler",
+          "interpreter",
+          "device",
+          "keyboard",
+          "printer"
+        ],
+        "clusters": [
+          {
+            "name": "Machine",
+            "terms": [
+              "machine"
+            ]
+          },
+          {
+            "name": "Computing Device",
+            "terms": [
+              "computer",
+              "portable computer",
+              "laptop",
+              "personal computer",
+              "desktop computer",
+              "server"
+            ]
+          },
+          {
+            "name": "Software",
+            "terms": [
+              "software"
+            ]
+          },
+          {
+            "name": "Code",
+            "terms": [
+              "code"
+            ]
+          },
+          {
+            "name": "Operating System",
+            "terms": [
+              "operating system"
+            ]
+          },
+          {
+            "name": "Program",
+            "terms": [
+              "program"
+            ]
+          },
+          {
+            "name": "Compiler",
+            "terms": [
+              "compiler"
+            ]
+          },
+          {
+            "name": "Interpreter",
+            "terms": [
+              "interpreter"
+            ]
+          },
+          {
+            "name": "Device",
+            "terms": [
+              "device"
+            ]
+          },
+          {
+            "name": "Input Device",
+            "terms": [
+              "keyboard"
+            ]
+          },
+          {
+            "name": "Output Device",
+            "terms": [
+              "printer"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": "computer",
+            "target": "portable computer"
+          },
+          {
+            "source": "device",
+            "target": "keyboard"
+          },
+          {
+            "source": "computer",
+            "target": "laptop"
+          },
+          {
+            "source": "device",
+            "target": "printer"
+          },
+          {
+            "source": "computer",
+            "target": "personal computer"
+          }
+        ],
+        "max_degree": 3,
+        "audit": {
+          "model_calls": 1,
+          "candidate_edge_count": 12,
+          "degree_pruned_pairs": [
+            {
+              "source": "computer",
+              "target": "software"
+            },
+            {
+              "source": "computer",
+              "target": "operating system"
+            },
+            {
+              "source": "computer",
+              "target": "program"
+            },
+            {
+              "source": "computer",
+              "target": "compiler"
+            },
+            {
+              "source": "computer",
+              "target": "interpreter"
+            },
+            {
+              "source": "computer",
+              "target": "desktop computer"
+            },
+            {
+              "source": "computer",
+              "target": "server"
+            }
+          ],
+          "isolated_terms": [
+            "machine",
+            "desktop computer",
+            "server",
+            "software",
+            "code",
+            "operating system",
+            "program",
+            "compiler",
+            "interpreter"
+          ]
+        }
+      },
+      "elapsed_seconds": 31.172
+    }
+  },
+  "sample": [
+    {
+      "sample_id": "pair-001",
+      "case_id": "vehicles",
+      "source": "aircraft",
+      "target": "helicopter",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-002",
+      "case_id": "birds",
+      "source": "sphenisciform seabird",
+      "target": "penguin",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-003",
+      "case_id": "musical_instruments",
+      "source": "woodwind",
+      "target": "flute",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-004",
+      "case_id": "musical_instruments",
+      "source": "wind instrument",
+      "target": "woodwind",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-005",
+      "case_id": "computing",
+      "source": "computer",
+      "target": "personal computer",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-006",
+      "case_id": "vehicles",
+      "source": "public transport",
+      "target": "bus",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-007",
+      "case_id": "anatomy",
+      "source": "liver",
+      "target": "vein",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-008",
+      "case_id": "birds",
+      "source": "bird",
+      "target": "anseriform bird",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-009",
+      "case_id": "anatomy",
+      "source": "liver",
+      "target": "connective tissue",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-010",
+      "case_id": "occupations",
+      "source": "health professional",
+      "target": "doctor",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-011",
+      "case_id": "musical_instruments",
+      "source": "bowed stringed instrument",
+      "target": "guitar",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-012",
+      "case_id": "birds",
+      "source": "bird",
+      "target": "bird of prey",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-013",
+      "case_id": "musical_instruments",
+      "source": "bowed stringed instrument",
+      "target": "violin",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-014",
+      "case_id": "food",
+      "source": "food",
+      "target": "starches",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-015",
+      "case_id": "birds",
+      "source": "columbiform bird",
+      "target": "pigeon",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-016",
+      "case_id": "birds",
+      "source": "anseriform bird",
+      "target": "duck",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-017",
+      "case_id": "occupations",
+      "source": "doctor",
+      "target": "nurse",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-018",
+      "case_id": "vehicles",
+      "source": "vessel",
+      "target": "ship",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-019",
+      "case_id": "computing",
+      "source": "computer",
+      "target": "portable computer",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-020",
+      "case_id": "musical_instruments",
+      "source": "brass instrument",
+      "target": "trumpet",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-021",
+      "case_id": "musical_instruments",
+      "source": "woodwind",
+      "target": "brass instrument",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-022",
+      "case_id": "occupations",
+      "source": "professional",
+      "target": "health professional",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-023",
+      "case_id": "computing",
+      "source": "computer",
+      "target": "laptop",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-024",
+      "case_id": "vehicles",
+      "source": "public transport",
+      "target": "train",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-025",
+      "case_id": "anatomy",
+      "source": "lung",
+      "target": "artery",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-026",
+      "case_id": "occupations",
+      "source": "craftsman",
+      "target": "carpenter",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-027",
+      "case_id": "food",
+      "source": "vegetable",
+      "target": "edible fruit",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-028",
+      "case_id": "anatomy",
+      "source": "kidney",
+      "target": "vein",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-029",
+      "case_id": "food",
+      "source": "edible fruit",
+      "target": "citrus",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-030",
+      "case_id": "occupations",
+      "source": "craftsman",
+      "target": "woodworker",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-031",
+      "case_id": "food",
+      "source": "vegetable",
+      "target": "carrot",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-032",
+      "case_id": "birds",
+      "source": "bird",
+      "target": "vertebrate",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-033",
+      "case_id": "vehicles",
+      "source": "aircraft",
+      "target": "airplane",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-034",
+      "case_id": "occupations",
+      "source": "educator",
+      "target": "teacher",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-035",
+      "case_id": "food",
+      "source": "food",
+      "target": "baked goods",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-036",
+      "case_id": "musical_instruments",
+      "source": "brass instrument",
+      "target": "trombone",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-037",
+      "case_id": "birds",
+      "source": "passerine",
+      "target": "sparrow",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-038",
+      "case_id": "occupations",
+      "source": "skilled worker",
+      "target": "professional",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-039",
+      "case_id": "food",
+      "source": "citrus",
+      "target": "lemon",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-040",
+      "case_id": "anatomy",
+      "source": "heart",
+      "target": "vein",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-041",
+      "case_id": "computing",
+      "source": "device",
+      "target": "printer",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-042",
+      "case_id": "occupations",
+      "source": "doctor",
+      "target": "surgeon",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-043",
+      "case_id": "occupations",
+      "source": "worker",
+      "target": "educator",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-044",
+      "case_id": "anatomy",
+      "source": "kidney",
+      "target": "blood vessel",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-045",
+      "case_id": "vehicles",
+      "source": "motor vehicle",
+      "target": "car",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-046",
+      "case_id": "food",
+      "source": "produce",
+      "target": "root vegetable",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-047",
+      "case_id": "food",
+      "source": "citrus",
+      "target": "orange",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-048",
+      "case_id": "occupations",
+      "source": "health professional",
+      "target": "educator",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-049",
+      "case_id": "anatomy",
+      "source": "kidney",
+      "target": "artery",
+      "state": "pending"
+    },
+    {
+      "sample_id": "pair-050",
+      "case_id": "anatomy",
+      "source": "heart",
+      "target": "liver",
+      "state": "pending"
+    }
+  ]
+}

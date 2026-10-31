@@ -59,13 +59,73 @@ def validate(base_url, browser_channel=None):
         page.wait_for_function("() => window.oldContext.pending.size === 0")
         assert page.evaluate("() => graph.edges().every(e => !e.data('described'))")
         expect(page.locator("#relation-drawer")).to_be_hidden()
+        failures = page.evaluate("""async () => {
+          const originalRequest = request, failures = [];
+          try {
+            request = async () => { throw new Error('Offline'); };
+            await checkModel();
+            if (!button.disabled || modelReady) failures.push('offline state');
+            request = async () => ({state: 'ready'});
+            await checkModel();
+            if (button.disabled || !modelReady || statusDot.classList.contains('error'))
+              failures.push('connection recovery');
+            setStatus('Enter at least two terms.', 'error');
+            await checkModel();
+            if (statusText.textContent !== 'Enter at least two terms.') failures.push('input error preservation');
+            let finishOldCheck;
+            request = () => new Promise(resolve => { finishOldCheck = resolve; });
+            const oldCheck = checkModel();
+            request = async () => ({state: 'ready'});
+            await checkModel();
+            finishOldCheck({state: 'loading'});
+            await oldCheck;
+            if (button.disabled || !modelReady || statusText.textContent !== 'Enter at least two terms.')
+              failures.push('out-of-order status replies');
+            for (const fail of [false, true]) {
+              let finish;
+              request = () => new Promise((resolve, reject) => { finish = fail ? reject : resolve; });
+              const checking = checkModel();
+              generating = true; button.disabled = true;
+              setStatus('Generating the replacement graph…', 'loading');
+              finish(fail ? new Error('Offline') : {state: 'ready'});
+              await checking;
+              if (!button.disabled || statusText.textContent !== 'Generating the replacement graph…')
+                failures.push(fail ? 'late status failure' : 'late status success');
+              generating = false;
+            }
+          } finally {
+            request = originalRequest; generating = false; await checkModel();
+          }
+          return failures;
+        }""")
+        # A label request started on the old graph must not replace the status
+        # while the user is generating its replacement.
+        generations = []
+        page.route("**/api/generate-topology", lambda route: generations.append(route))
+        page.get_by_role("button", name="Show relation labels", exact=True).click()
+        page.wait_for_function("() => context.pending.size === 3")
+        page.get_by_role("button", name="Generate graph", exact=True).click()
+        page.wait_for_function("() => generating")
+        assert len(generations) == 1
+        label_request = pending[4]
+        label_request.fulfill(json={"state": "done", "relations": [
+            {**pair, "supported": True, "predicate": "influences",
+             "explanation": f"{pair['source']} influences {pair['target']}."}
+            for pair in label_request.request.post_data_json["edges"]]})
+        page.wait_for_function("() => context.pending.size === 0")
+        if page.locator("#status").inner_text() != "Grouping your terms and finding connections…":
+            failures.append("late label result")
+        generations[0].fulfill(json={"state": "done", "topology_id": "new", "graph": payload})
+        page.wait_for_function("() => !generating")
+        assert not failures, failures
         assert not errors, errors
         output = Path(__file__).resolve().parents[1] / ".cache/validation/races.json"
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(json.dumps({"stale_selection_guard": True, "hide_during_loading": True,
-            "replacement_graph_guard": True, "javascript_errors": errors}, indent=2) + "\n", encoding="utf-8")
+            "replacement_graph_guard": True, "status_recovery": True,
+            "generation_status_guard": True, "javascript_errors": errors}, indent=2) + "\n", encoding="utf-8")
         browser.close()
-        print("Selection races, hiding during loading, and replacement graph checks passed.")
+        print("Selection races, hidden labels, replacement graphs, status recovery, and generation status checks passed.")
 
 
 def main():

@@ -6,6 +6,7 @@ const fitButton = document.getElementById("fit"), labelsButton = document.getEle
 const drawer = document.getElementById("relation-drawer");
 let graph = null, generating = false, modelReady = false, labelsVisible = false;
 let context = null, selectedEdge = null, selectionVersion = 0;
+let modelCheckVersion = 0, modelStatusFailed = false;
 function setStatus(message, state = "ready") { statusText.textContent = message; statusDot.className = "status-dot" + (state === "ready" ? "" : " " + state); }
 async function request(path, options = {}) {
   const response = await fetch(path, { ...options, cache: "no-store" });
@@ -28,15 +29,23 @@ async function completeJob(path, body, progress) {
 }
 async function checkModel() {
   if (generating) return;
+  const version = ++modelCheckVersion;
   try {
     const data = await request("/api/status");
+    if (generating || version !== modelCheckVersion) return;
     modelReady = data.state === "ready";
     button.disabled = !modelReady;
-    if (data.state === "error") setStatus("The model could not start. Check the server terminal.", "error");
+    if (data.state === "error") { modelStatusFailed = true; setStatus("The model could not start. Check the server terminal.", "error"); }
     else if (data.state === "loading") setStatus("Starting the model…", "loading");
-    else if (modelReady && statusDot.classList.contains("loading") && !context?.pending.size)
+    else if (modelReady && (modelStatusFailed || statusDot.classList.contains("loading")) && !context?.pending.size) {
+      modelStatusFailed = false;
       setStatus(graph ? "Your graph is ready. Click a connection to explore it." : "Ready when you are.");
-  } catch { button.disabled = true; modelReady = false; setStatus("Cannot reach the model. Make sure the web UI server is running.", "error"); }
+    }
+  } catch {
+    if (generating || version !== modelCheckVersion) return;
+    modelStatusFailed = true; button.disabled = true; modelReady = false;
+    setStatus("Cannot reach the model. Make sure the web UI server is running.", "error");
+  }
 }
 function fitGraph() { graph?.fit(undefined, 45); }
 // Measure the text we actually render; character counts underestimate long words
@@ -315,7 +324,7 @@ function drawGraph(data, topologyId) {
 }
 form.addEventListener("submit", async event => {
   event.preventDefault(); if (generating || !modelReady) return;
-  generating = true; closeDrawer(); button.disabled = true; labelsButton.disabled = true; input.readOnly = true;
+  generating = true; modelCheckVersion++; closeDrawer(); button.disabled = true; labelsButton.disabled = true; input.readOnly = true;
   buttonLabel.textContent = "Generating…"; form.setAttribute("aria-busy", "true");
   setStatus("Grouping your terms and finding connections…", "loading");
   try {
@@ -337,10 +346,10 @@ labelsButton.addEventListener("click", async () => {
     const edges = [...graph.edges()];
     for (let index = 0; index < edges.length && labelsVisible && context === targetContext && !generating; index += 12)
       await ensureDescriptions(edges.slice(index, index + 12), targetContext);
-    if (context === targetContext && labelsVisible) {
+    if (context === targetContext && labelsVisible && !generating) {
       arrangeGraph(); setStatus("Relation labels are shown. Click a connection for its explanation.");
     }
-  } catch (error) { if (context === targetContext && labelsVisible) setStatus(error.message, "error"); }
+  } catch (error) { if (context === targetContext && labelsVisible && !generating) setStatus(error.message, "error"); }
 });
 document.getElementById("relation-close").addEventListener("click", closeDrawer);
 document.getElementById("relation-retry").addEventListener("click", () => { if (selectedEdge) inspectEdge(graph.getElementById(selectedEdge)); });
